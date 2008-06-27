@@ -3,12 +3,16 @@ args <- commandArgs(TRUE)
 # SNP location
 # chrFP <- "/nfs/apollo/2/c2b2/users/saec/SJS/usr/bernd/data/Human1M_chrom_loc.txt"
 
-## args[1] should be the PLINK --assoc output 
-assoc <- read.table(args[1], header=TRUE)
-fp <- args[2]
-gpName <- args[3]
+## args[1] should be the PLINK --assoc output
+
+assocf <- args[1]
+gpName <- args[2]
+
+assoc <- read.table(assocf, header=TRUE)
+# fp <- args[2]
 
 
+fp <- paste(assocf, "Manhattan.png", sep="_")
 
 # chr <- read.delim(chrFP, sep=" ", header=TRUE,colClasses=c("character","character","numeric"))
 
@@ -29,12 +33,17 @@ maxs
 
 m<-max(maxs)
 
+ymaxx = max(-log10(assoc$P)) + 0.5 
+
 plTitle <- paste("Assoc. p-value vs chromosomal position (ALL, ", gpName, ")", sep="")
-postscript(file = fp, paper = 'special', width = 18, height = 6, horizontal = FALSE, onefile = FALSE, family = "ComputerModern")
-plot(c(0,0),c(0,0), xlim=c(0,m), ylim=c(0,10), type="o", col="1",  axes=FALSE, xaxs="i",yaxs="i")
+# postscript(file = fp, paper = 'special', width = 18, height = 6, horizontal = FALSE, onefile = FALSE, family = "ComputerModern")
+
+png(filename = fp, width=2400, height=800 )
+
+plot(c(0,0),c(0,0), xlim=c(0,m), ylim=c(0,ymaxx), type="o", col="1",  axes=FALSE, xaxs="i",yaxs="i", main=plTitle, xlab="Chromosome", ylab="-log10(P)")
 axis(1, labels=chrs, at=tics)
 axis(2, labels=T)
-title(main=plTitle, xlab="Chromosome", ylab="-log10(P)")
+# title(main=plTitle, xlab="Chromosome", ylab="-log10(P)")
 par(new=T)
 j=0
 for (i in chrs){
@@ -43,10 +52,14 @@ for (i in chrs){
   if ( (j %% 2) == 1) {
     coll <- "lightblue"
   }else{ coll <- "darkblue"}
-  points(maxs[j]+tt$BP,-log10(tt$P), type="p", col=coll, pch = 20)
 
-  xx = tt[tt$P<0.000001, ]
-  yy = tt[tt$P<0.0000001, ]
+  ## big p-values:
+  bigp = tt[tt$P>0.000001, ]
+  
+  points(maxs[j]+bigp$BP,-log10(bigp$P), type="p", col=coll, pch = 20)
+
+  xx = tt[tt$P<=0.000001, ]
+  yy = tt[tt$P<=0.0000001, ]
 
   points(maxs[j]+xx$BP, -log10(xx$P),  type="p", col="green", pch=20)
   points(maxs[j]+yy$BP, -log10(yy$P),  type="p", col="red", pch=20)
