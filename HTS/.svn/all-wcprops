@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 28
+/svn/!svn/ver/80/scripts/HTS
+END
+engine-qsub.rb
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/85/scripts/HTS/engine-qsub.rb
+END
+atlas-snp-4-maq.rb
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/85/scripts/HTS/atlas-snp-4-maq.rb
+END
+pipeline-maq-solid-upstream.rb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/86/scripts/HTS/pipeline-maq-solid-upstream.rb
+END
+get-pairs-from-fastq.rb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/86/scripts/HTS/get-pairs-from-fastq.rb
+END
+pipeline-maq-solid-downstream.rb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/86/scripts/HTS/pipeline-maq-solid-downstream.rb
+END
+pipeline-maq-solexa-downstream.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/83/scripts/HTS/pipeline-maq-solexa-downstream.rb
+END

@@ -1,0 +1,88 @@
+8
+
+dir
+80
+https://refseq.googlecode.com/svn/scripts/HTS
+https://refseq.googlecode.com/svn
+
+
+
+2008-09-24T15:08:49.831751Z
+80
+joshuashen
+
+
+svn:special svn:externals svn:needs-lock
+
+engine-qsub.rb
+file
+85
+
+
+
+2008-10-02T20:42:12.000000Z
+f1564d5f0e439e0b62a0c9e17ba4c50b
+2008-10-02T20:52:02.073205Z
+85
+joshuashen
+
+atlas-snp-4-maq.rb
+file
+85
+
+
+
+2008-09-28T01:47:17.000000Z
+a491118f159414f815f1cf31054b0b97
+2008-10-02T20:52:02.073205Z
+85
+joshuashen
+
+pipeline-maq-solid-upstream.rb
+file
+86
+
+
+
+2008-10-03T01:52:32.000000Z
+cd38d1f7ef131255236b4cbccab9fc34
+2008-10-07T21:31:47.785738Z
+86
+joshuashen
+
+get-pairs-from-fastq.rb
+file
+86
+
+
+
+2008-10-02T21:43:39.000000Z
+adfff510c3ba55125e935bf90dd20d74
+2008-10-07T21:31:47.785738Z
+86
+joshuashen
+
+pipeline-maq-solid-downstream.rb
+file
+86
+
+
+
+2008-10-04T12:04:41.000000Z
+0854a7fd66bdadf339169cc941a6fdab
+2008-10-07T21:31:47.785738Z
+86
+joshuashen
+
+pipeline-maq-solexa-downstream.rb
+file
+83
+
+
+
+2008-09-27T18:50:25.000000Z
+5a0cfbff8afdff88441b4567d5ec20c7
+2008-09-27T18:55:43.887865Z
+83
+joshuashen
+
