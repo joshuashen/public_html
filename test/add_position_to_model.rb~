@@ -1,0 +1,6 @@
+## 
+
+pos = ARGV[0]
+
+model = ARGV[1]
+

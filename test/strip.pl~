@@ -1,0 +1,4 @@
+$a  = "  aa ";
+
+$b = strip($a);
+print $b, "\n";

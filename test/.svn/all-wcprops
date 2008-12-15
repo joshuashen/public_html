@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 29
+/svn/!svn/ver/80/scripts/test
+END
+remove-first-column.rb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/80/scripts/test/remove-first-column.rb
+END
+pick-controls-based-on-LRR-SD.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/80/scripts/test/pick-controls-based-on-LRR-SD.rb
+END
+mod_ped_from_MHC.rb
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/80/scripts/test/mod_ped_from_MHC.rb
+END
+compare-SNP.rb
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/80/scripts/test/compare-SNP.rb
+END
+temp2.rb
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/80/scripts/test/temp2.rb
+END
+visualize_LRR.rb
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/80/scripts/test/visualize_LRR.rb
+END
+change-phenotype.rb
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/80/scripts/test/change-phenotype.rb
+END
+mod_dili_case_names.rb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/80/scripts/test/mod_dili_case_names.rb
+END
+mod-dili-names.rb
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/80/scripts/test/mod-dili-names.rb
+END
+make-pheno-file.rb
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/80/scripts/test/make-pheno-file.rb
+END
+find-matches-from-germline.rb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/80/scripts/test/find-matches-from-germline.rb
+END
+change-chr-X.rb
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/80/scripts/test/change-chr-X.rb
+END
+temp.rb
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/80/scripts/test/temp.rb
+END
+change_names.rb
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/80/scripts/test/change_names.rb
+END
+get-p-values.rb
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/80/scripts/test/get-p-values.rb
+END
+make-dummy-ped.rb
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/80/scripts/test/make-dummy-ped.rb
+END
+get_eudragene_cases.rb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/80/scripts/test/get_eudragene_cases.rb
+END
+get-LRR_mean.rb
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/80/scripts/test/get-LRR_mean.rb
+END
+download_HapMap_LD.rb
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/89/scripts/test/download_HapMap_LD.rb
+END

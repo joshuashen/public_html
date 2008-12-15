@@ -1,0 +1,7 @@
+args <- commandArgs(TRUE)
+
+a <- args[1]
+b <- args[2]
+
+paste(a, "  Hello", sep="_" )
+
