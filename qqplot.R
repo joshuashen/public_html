@@ -43,11 +43,11 @@ histqq <- function(pvalfile = NULL, pdffilePrefix = NULL,
     }
     if(!is.null(pdffilePrefix)) {
       outfile  <-  paste(pdffilePrefix,n[i],"qq.ps", sep=".")	
-      postscript(outfile,  height = 6.5, width = 9, paper = 'special', horizontal = FALSE, onefile = FALSE, family = "ComputerModern")
+      postscript(outfile,  height = 7, width = 7, paper = 'special', horizontal = FALSE, onefile = FALSE, family = "ComputerModern")
     }
     
-    mainhist  <-  paste(n[i],"histogram", sep=" ")
-    mainqq <-   paste(n[i]," QQ (", plotName, ")", sep="")
+#    mainhist  <-  paste(n[i],"histogram", sep=" ")
+ #   mainqq <-   paste(n[i]," QQ (", plotName, ")", sep="")
 #    par(mfrow = c(1, 2), mar=c(6,5,3.5,1), pty = "s")
 #    
 #    truehist(pvals, main = mainhist,
@@ -75,7 +75,8 @@ histqq <- function(pvalfile = NULL, pdffilePrefix = NULL,
 #    data$limupper <- data$expected+qnorm((1-CIconf)/2,lower=F)*sqrt(varexp)
     
     qqplot(-log10(data$expected), -log10(data$observed),
-           main = mainqq, xlab = "-Log10 Expected P-values",
+           # main = mainqq,
+           xlab = "-Log10 Expected P-values",
            ylab = "-Log10 Observed P-values",
            pch = 20)
     lines(-log10(data$expected),-log10(data$expected),lwd=2.5,col = "purple")

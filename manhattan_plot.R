@@ -6,7 +6,7 @@ args <- commandArgs(TRUE)
 ## args[1] should be the PLINK --assoc output
 
 assocf <- args[1]
-gpName <- args[2]
+# gpName <- args[2]
 
 assoc <- read.table(assocf, header=TRUE)
 # fp <- args[2]
@@ -19,7 +19,8 @@ fp <- paste(assocf, "Manhattan.png", sep="_")
 # asschr <- merge.data.frame(chr,assoc,by.x="SNP", by.y="V1")
 
 
-chrs   <- c("1","2", "3", "4", "5", "6", "7", "8", "9" , "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "X")
+chrs   <- c("1","2", "3", "4", "5", "6", "7", "8", "9" , "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23")
+chrsLabel   <- c("1","2", "3", "4", "5", "6", "7", "8", "9" , "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "X")
 maxs   <- c(0  ,0  ,0   ,0   ,0   ,0   ,0   ,0   ,0    ,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,   0)
 tics   <- c(0  ,0  ,0   ,0   ,0   ,0   ,0   ,0   ,0    ,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,   0)
 
@@ -35,13 +36,19 @@ m<-max(maxs)
 
 ymaxx = max(-log10(assoc$P)) + 0.5 
 
-plTitle <- paste("Assoc. p-value vs chromosomal position (ALL, ", gpName, ")", sep="")
+# plTitle <- paste("Assoc. p-value vs chromosomal position (ALL, ", gpName, ")", sep="")
 # postscript(file = fp, paper = 'special', width = 18, height = 6, horizontal = FALSE, onefile = FALSE, family = "ComputerModern")
 
-png(filename = fp, width=2400, height=800 )
+# png(filename = fp, width=2400, height=800 )
+png(filename = fp, width=1200, height=600 )
 
-plot(c(0,0),c(0,0), xlim=c(0,m), ylim=c(0,ymaxx), type="o", col="1",  axes=FALSE, xaxs="i",yaxs="i", main=plTitle, xlab="Chromosome", ylab="-log10(P)")
-axis(1, labels=chrs, at=tics)
+# plot(c(0,0),c(0,0), xlim=c(0,m), ylim=c(0,ymaxx), type="o", col="1",  axes=FALSE, xaxs="i",yaxs="i", main=plTitle, xlab="Chromosome", ylab="-log10(P)")
+
+par(cex.lab=2)
+par(cex.axis=2)
+par(mar=c(5, 5, 2, 2)) # margins, bottom, left, top, right
+plot(c(0,0),c(0,0), xlim=c(0,m), ylim=c(0,ymaxx), type="o", col="1",  axes=FALSE, xaxs="i",yaxs="i",  xlab="Chromosome", ylab="-log10(p-value)")
+axis(1, labels=chrsLabel, at=tics)
 axis(2, labels=T)
 # title(main=plTitle, xlab="Chromosome", ylab="-log10(P)")
 par(new=T)

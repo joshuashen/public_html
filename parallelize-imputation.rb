@@ -17,45 +17,48 @@ class Parallelizer
   end
 
   def makeScript
+
     @divs.each do |list|
       outf = File.new(list + '.sh', "w")
       outf.puts '#!/bin/sh' + "\n" + '#$ -cwd' + "\n" + '#$ -j y'
 #      outf.puts "PLINK=#{@plink}"
       outf.puts "#{@plink} --bfile #{@oldPrefix} --extract #{list} --make-bed --out #{list}"
-      outf.puts "#{@plink} --bfile #{list} --all --proxy-impute all --proxy-replace --make-bed --out #{list}_impute"
+      outf.puts "#{@plink} --bfile #{list} --all --proxy-impute all --make-bed --out #{list}_impute"
       outf.close()
     end
+
+    
+    
+
   end
 
-  # in bim, the SNPs are sorted based on chr and positions
+  # in bim, the SNPs are not necessary sorted based on chr and positions
   def splitBim(bim) 
-    chr = ''
-    arr = []
-    
+    chr = {}
     File.new(bim, 'r').each do |line|
       if line=~ /^(\S+)\s+(\S+)/
         snp = $2
-        if $1 != chr  # a
-          makeChr(arr, chr)
-          arr = []
+        if !chr.key?($1)
+          chr[$1] = []
         end
-        arr << snp
-        chr = $1
+        chr[$1] << snp
       end
     end
-    arr = nil
+
+    chr.each do |c, arr|
+      makeChr(arr, c)
+    end
+    chr = nil
   end
   
   def makeChr(snps, chr)
     return if snps.size < 1
-    
     ofile = "Temp_chr" + chr + "_SNPs"
     out = File.new(ofile, 'w')
     out.puts snps.join("\n")
     out.close
     @divs << ofile  ## 
   end
-  
 end
 
 p = Parallelizer.new(input, plink)
