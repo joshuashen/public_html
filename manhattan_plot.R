@@ -8,7 +8,7 @@ args <- commandArgs(TRUE)
 assocf <- args[1]
 # gpName <- args[2]
 
-assoc <- read.table(assocf, header=TRUE)
+assoc <- read.table(assocf, header=TRUE, na.strings = "NA")
 # fp <- args[2]
 
 
@@ -40,7 +40,7 @@ ymaxx = max(-log10(assoc$P)) + 0.5
 # postscript(file = fp, paper = 'special', width = 18, height = 6, horizontal = FALSE, onefile = FALSE, family = "ComputerModern")
 
 # png(filename = fp, width=2400, height=800 )
-png(filename = fp, width=1200, height=600 )
+png(filename = fp, width=1200, height=800 )
 
 # plot(c(0,0),c(0,0), xlim=c(0,m), ylim=c(0,ymaxx), type="o", col="1",  axes=FALSE, xaxs="i",yaxs="i", main=plTitle, xlab="Chromosome", ylab="-log10(P)")
 
