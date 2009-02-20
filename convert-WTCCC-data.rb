@@ -75,7 +75,7 @@ class Genotype
     nameHash = {}
     fh.each do |line|
       line.chomp!
-      cols=line.split(/\s+/)
+      cols=line.chomp.split(/\s+/)
       if cols[0] == '' # first line
         @firstGTCol.upto(cols.size - 1) do |i|
           nameHash[i] = cols[i]
