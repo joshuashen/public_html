@@ -51,6 +51,8 @@ plot(c(0,0),c(0,0), xlim=c(0,m), ylim=c(0,ymaxx), type="o", col="1",  axes=FALSE
 axis(1, labels=chrsLabel, at=tics)
 axis(2, labels=T)
 # title(main=plTitle, xlab="Chromosome", ylab="-log10(P)")
+abline(h = -1 * log10(0.00000005), lty="dashed", col='gray')
+
 par(new=T)
 j=0
 for (i in chrs){
