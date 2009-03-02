@@ -25,7 +25,7 @@ def main
 
   i = 0
   newBatch = nil
-  chisq = {}
+  chisq = []
 
   permutationList.each do |pm|
     if i % batchSize == 0  ## first in a new batch
@@ -34,7 +34,7 @@ def main
         newBatch  = File.new("#{prefix}_#{j}_permu.chisq", "w")
         output(chisq, snps, newBatch)
         newBatch.close
-        chisq = {}
+        chisq = []
       end
 
       readPermu(pm, chisq)
@@ -49,12 +49,12 @@ end
 
 def output(chisq, snps, fh)
   fh.puts "Marker\tCHI2_PERM"
-  permutations = chisq.keys.sort
+#   permutations = chisq.keys.sort
   snps.keys.sort.each do |snp|
     fh.print "#{snp}\t"
-    permutations.each do |pm|
-      if chisq[pm].key?(snp)
-        fh.print ",#{chisq[pm][snp]}"
+    chisq.each do |pm|
+      if pm.key?(snp)
+        fh.print ",#{pm[snp]}"
       else
         fh.print ",0"
       end
@@ -65,16 +65,17 @@ def output(chisq, snps, fh)
 end
 
 def readPermu(pm, chisq)
-  chisq[pm] = {}
+    pmHash = {}
+  chisq << pmHash
   File.new(pm, 'r').each do |line|
     next  unless line=~ /TREND/
     line.strip!
     cols=line.split(/\s+/)
     chi2 = cols[9]
     if chi2 != 'NA'
-      chisq[pm][cols[1]]= chi2
+      pmHash[cols[1]]= chi2
     else
-      chisq[pm][cols[1]]= 0
+      pmHash[cols[1]]= 0
     end
   end
 end
