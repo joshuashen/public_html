@@ -36,9 +36,8 @@ def main
         newBatch.close
         chisq = []
       end
-
-      readPermu(pm, chisq)
     end
+    readPermu(pm, chisq)
     i += 1
   end
   j =  i / batchSize
