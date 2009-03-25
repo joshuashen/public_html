@@ -8,7 +8,8 @@
 bfile=$1   ## user provided 
 
 #hard-code illumina 1m map data:
-snpname="/nfs/apollo/2/c2b2/users/saec/SJS/usr/ys/data/illumina1M.pedsnp"
+snpname="/ifs/home/c2b2/af_lab/saec/SJS/usr/ys/data/illumina1M.pedsnp"
+##  "/nfs/apollo/2/c2b2/users/saec/SJS/usr/ys/data/illumina1M.pedsnp"
 
 ## it would be better to set this in .bash_profile or .bash_rc
 path=${PATH}:~/Software/eigensoft/2.0/bin/
