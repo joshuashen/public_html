@@ -37,16 +37,17 @@ phenotype=$bfile"_eigen.pheno"
 eigenout=$bfile"_eigen.chisq"
 eigengeno=$bfile"_eigen.geno"
 
- if [ -s ${genotypename} ] && [ -s ${indivname} ]; then
-    echo "skip PLINK commands"
- else
-    ${plink} --bfile ${bfile} --out ${bfile} --recode  --transpose
-    gawk '/^NA/{print $1,$2,$3,$4,$5,2}!/^NA/{print $1,$2,$3,$4,$5,1}' ${bfile}.tfam > tmp1345; mv tmp1345 ${bfile}.tfam
-    ${plink} --tped ${bfile}.tped --tfam ${bfile}.tfam  --out ${bfile} --recode  
-    gawk '!/^#/{gsub(/[DI]/,"0"); print}' ${bfile}.ped > ${genotypename}
+# if [ -s ${genotypename} ] && [ -s ${indivname} ]; then
+#    echo "skip PLINK commands"
+# else
+tfile=${bfile}"_t"
+    ${plink} --bfile ${bfile} --out ${tfile} --recode  --transpose
+    gawk '/^NA/{print $1,$2,$3,$4,$5,2}!/^NA/{print $1,$2,$3,$4,$5,1}' ${tfile}.tfam > tmp1345; mv tmp1345 ${tfile}.tfam
+    ${plink} --tped ${tfile}.tped --tfam ${tfile}.tfam  --out ${tfile} --recode  
+    gawk '!/^#/{gsub(/[DI]/,"0"); print}' ${tfile}.ped > ${genotypename}
     
-    cp ${bfile}.tfam ${indivname}
- fi
+    cp ${tfile}.tfam ${indivname}
+
 
 echo -e "genotypename:\t"${genotypename} > ${smartPCAPar}
 echo -e "snpname:\t"${newSNPname} >> ${smartPCAPar}
