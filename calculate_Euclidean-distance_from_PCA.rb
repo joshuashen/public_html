@@ -10,6 +10,7 @@ all = ARGV[1]
 evec = ARGV[2]
 
 $num = 4  ## num of eigen vectors considered important
+$range = 10 # number of controls that are close to the case
 
 $cases = {}
 $controls = {}
@@ -19,19 +20,19 @@ $eigenscore = {}
 
 File.new(ca, 'r').each do |line|
   cols = line.strip.split(/\s+/)
-  fid, flag = cols[0], cols[-1]
+  fid, gender, flag = cols[0], cols[-2], cols[-1]
   if flag == '2'
-    $cases[fid] = 1
-    $eigenscore[fid] = []
+    $cases[fid] = gender
+#    $eigenscore[fid] = []
   end
 end
 
 File.new(all, 'r').each do |line|
   cols = line.strip.split(/\s+/)
-  fid, flag = cols[0], cols[-1]
+  fid, gender, flag = cols[0], cols[-2], cols[-1]
   if flag == '1'
-    $controls[fid] = 1
-    $eigenscore[fid] = []
+    $controls[fid] = gender
+#    $eigenscore[fid] = []
   end
 end
 
@@ -57,13 +58,16 @@ end
 
 $cases.each_key do |ca|  
   d = {}
+  next unless $eigenscore.key?(ca)
   $controls.each_key do |co|
+#    $stderr.puts "#{co}\t#{$eigenscore[co]}"
+    next unless $eigenscore.key?(co)
     d[co] = euclidean($eigenscore[ca], $eigenscore[co], $eigenvals, $num)
   end
-  array = d.keys.sort {|a,b| d[a] <=> d[b]}[0,10]
+  array = d.keys.sort {|a,b| d[a] <=> d[b]}[0,$range]
   1.upto(10) do |i|
     co = array[i-1]
-    puts "#{ca}\tiid\t#{i}\t#{d[co]}\tz\t#{co}\tiid"
+    puts "#{ca}\tiid\t#{i}\t#{d[co]}\tz\t#{co}\tiid\t#{$cases[ca]}\t#{$controls[co]}"
   end
 end
 

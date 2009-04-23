@@ -9,6 +9,7 @@ ca = ARGV[0]
 all = ARGV[1]
 nearest = ARGV[2]
 
+$genderMatch = 1 # if 0, do not match gender
 $cases = {}
 $controls = {}
 $matched = {}
@@ -16,26 +17,35 @@ $priority = []
 
 File.new(ca, 'r').each do |line|
   cols = line.strip.split(/\s+/)
-  fid, flag = cols[0], cols[-1]
+  fid, gender, flag = cols[0], cols[-2], cols[-1]
   if flag == '2'
-    $cases[fid] = {:queue => [], :match => []}
+    $cases[fid] = {:gender => gender, :queue => [], :match => []}
     $priority << fid
   end
 end
 
 File.new(all, 'r').each do |line|
   cols = line.strip.split(/\s+/)
-  fid, flag = cols[0], cols[-1]
+  fid, gender, flag = cols[0], cols[-2], cols[-1]
   if flag == '1'
-    $controls[fid] = 1
+    $controls[fid] = gender
   end
 end
 
 File.new(nearest, 'r').each do |line|
   cols = line.strip.split(/\s+/)
   fid1, order, fid2 = cols[0], cols[2].to_i, cols[5]
+  flag = 1
   if $cases.key?(fid1) and $controls.key?(fid2)  ## enter the mode
-    $cases[fid1][:queue] << fid2
+    if $genderMatch == 1  # need to match gender
+      if $cases[fid1][:gender] != $controls[fid2] 
+        flag = 0
+      end
+    end
+      
+    if flag == 1
+      $cases[fid1][:queue] << fid2
+    end
   end
 end
 
