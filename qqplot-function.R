@@ -61,5 +61,5 @@ pQQplot <- function(pvalfile=NULL, data = NULL)
   legend("bottomright", c("Expected", paste("Lower Bound ",100*CIconf," CI",sep=""),
                           paste("Upper Bound ",100*CIconf," CI",sep="")), 
          col = c("purple","red","blue"), lty = 1, lwd = 2)
-  }
 }
+
