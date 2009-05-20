@@ -25,10 +25,10 @@ pQQplot <- function(pvalfile=NULL, data = NULL)
   else
     pvaldata <- data
   
-  n <- names(pvaldata_orig)
+#  n <- names(pvaldata_orig)
   
   pvaldata <- pvaldata[!is.na(pvaldata$P),]
-  pvals <- pvaldata$P
+  pvals <- as.vector(pvaldata$P)
      
  
   ## nsp is the number of sample points
@@ -43,23 +43,31 @@ pQQplot <- function(pvalfile=NULL, data = NULL)
   o <- order(pvals)
   data <- data.frame(cbind(exp[quants], sort(pvals)[quants]))
   dimnames(data)[[2]] <- c("expected","observed")
-  data$snpnames <- snpnames[o][quants]
-  varexp <- data$expected*(1-data$expected)/length(pvals) 
-  data$liminf   <- apply(cbind(data$expected-qnorm((1-CIconf)/2,lower=F)*sqrt(varexp),rep(  1/length(pvals)/10^5,length(unique(quants))) ),1,max)
-                                        #    data$liminf   <- data$expected-qnorm((1-CIconf)/2,lower=F)*sqrt(varexp)
-  data$limupper <- apply(cbind(data$expected+qnorm((1-CIconf)/2,lower=F)*sqrt(varexp),rep(1-1/length(pvals)/10^5,length(unique(quants))) ),1,min)
-#    data$limupper <- data$expected+qnorm((1-CIconf)/2,lower=F)*sqrt(varexp)
+ # data$snpnames <- snpnames[o][quants]
+
+
     
   qqplot(-log10(data$expected), -log10(data$observed),
            # main = mainqq,
          xlab = "-Log10 Expected P-values",
-         ylab = "-Log10 Observed P-values",
+         ylab = "-Log10 Observed P-values", col='red',
          pch = 19)
-  lines(-log10(data$expected),-log10(data$expected),lwd=2.5,col = "purple")
-  lines(-log10(data$expected),-log10(data$liminf),lwd=2,col="red")
-  lines(-log10(data$expected),-log10(data$limupper),lwd=2,col="blue")
-  legend("bottomright", c("Expected", paste("Lower Bound ",100*CIconf," CI",sep=""),
-                          paste("Upper Bound ",100*CIconf," CI",sep="")), 
-         col = c("purple","red","blue"), lty = 1, lwd = 2)
+
+  explimit = data$expected[data$expected > 0.00000005]
+  
+ # varexp <- data$expected*(1-data$expected)/length(pvals) 
+ # data$liminf   <- apply(cbind(data$expected-qnorm((1-CIconf)/2,lower=F)*sqrt(varexp),rep(  1/length(pvals)/10^5,length(unique(quants))) ),1,max)
+ # data$limupper <- apply(cbind(data$expected+qnorm((1-CIconf)/2,lower=F)*sqrt(varexp),rep(1-1/length(pvals)/10^5,length(unique(quants))) ),1,min)
+
+  varexp <- explimit*(1-explimit)/length(pvals)
+  liminf   <- apply(cbind(explimit-qnorm((1-CIconf)/2,lower=F)*sqrt(varexp),rep(  1/length(pvals)/10^5,length(unique(quants))) ),1,max)
+  limupper <- apply(cbind(explimit+qnorm((1-CIconf)/2,lower=F)*sqrt(varexp),rep(1-1/length(pvals)/10^5,length(unique(quants))) ),1,min)
+  
+  lines(-log10(explimit),-log10(explimit),lwd=2.5,col = "black")
+  lines(-log10(explimit),-log10(liminf),lwd=2,lty="dashed",col="blue")
+  lines(-log10(explimit),-log10(limupper),lwd=2,lty="dashed",col="blue")
+#  legend("bottomright", c("Expected", paste("Lower Bound ",100*CIconf," CI",sep=""),
+#                          paste("Upper Bound ",100*CIconf," CI",sep="")), 
+#         col = c("black","blue","blue"), lty = 1, lwd = 1)
 }
 
