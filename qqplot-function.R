@@ -53,7 +53,7 @@ pQQplot <- function(pvalfile=NULL, data = NULL)
            # main = mainqq,
          xlab = "-Log10 Expected P-values",
          ylab = "-Log10 Observed P-values", col='red',
-         pch = 19)
+         pch = 20)
 
   explimit = data$expected[data$expected > 0.00000005]
   
