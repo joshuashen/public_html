@@ -10,7 +10,7 @@ all = ARGV[1]
 evec = ARGV[2]
 
 $num = 4  ## num of eigen vectors considered important
-$range = 10 # number of controls that are close to the case
+$range = 20 # number of controls that are close to the case
 
 $cases = {}
 $controls = {}
