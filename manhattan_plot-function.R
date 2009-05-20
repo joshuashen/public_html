@@ -1,6 +1,10 @@
-plotManhattan <- function(input)
+plotManhattan <- function(input=NULL, data=NULL)
 {
-  assoc <- read.table(input, header=TRUE, na.strings = "NA")
+  if (is.null(data)) {
+    assoc <- read.table(input, header=TRUE, na.strings = "NA")
+  } else {
+    assoc <- data
+  }
   chrs   <- c("1","2", "3", "4", "5", "6", "7", "8", "9" , "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23")
   chrsLabel   <- c("1","2", "3", "4", "5", "6", "7", "8", "9" , "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "X")
   maxs   <- c(0  ,0  ,0   ,0   ,0   ,0   ,0   ,0   ,0    ,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,   0)
