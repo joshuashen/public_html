@@ -15,14 +15,18 @@
 # Odds ratio: 2, 4, 8, 16, 32
 # genetic model: additive, dominant, recessive
 
-caseVec <- c(49,70)
-controlVec <- c(100, 143,1600, 4900)
+caseVec <- c(9, 12, 21, 49,70)
+controlVec <- c(100, 143, 400, 1600, 4900, 6400)
 mafVec <- 1:50/100
-oddsVec <- c(2,2.5,3,3.5,4,6,10)
+oddsVec <- c(2,2.5,3,3.5,4,5,6,10)
 
 simulation = 1000
 
-pCutOff = c(0.0000001, 0.00000005 )  # 10^-7 or 5x10^-8
+output = "power_simulation.csv"
+
+write.table(t(c("# NumCases", "NumControls", "MAF", "OR", "power", "p-value_CutOff")), file = output, quote = F, sep = "\t", row.names = F, col.names = F)
+
+pCutOff = c(0.000001, 0.00000005)   # genome-wide significance 5x10^-8
 
 for (maf in mafVec) {
   for (oddsratio in oddsVec ) {
@@ -51,8 +55,13 @@ for (maf in mafVec) {
           }
         }
         power = times / simulation
-        print(c(case, control, maf, oddsratio, power[1], "cutoff:1e-7"))
-        print(c(case, control, maf, oddsratio, power[2], "cutoff:5e-8"))
+        write.table(t(c(case, control, maf, oddsratio, power[1], "cutoff:1e-6")), file = output, append = T , quote = F, sep = "\t", row.names = F, col.names = F)
+        write.table(t(c(case, control, maf, oddsratio, power[2], "cutoff:5e-8")), file = output, append = T , quote = F, sep = "\t", row.names = F, col.names = F)
+        
+
+        
+       # print(c(case, control, maf, oddsratio, power[1], "cutoff:1e-7"))
+       # print(c(case, control, maf, oddsratio, power[2], "cutoff:5e-8"))
                            #          print(c(case, control, maf, oddsratio, -log10(p)))
       }
     }
