@@ -1,7 +1,7 @@
 ### make plink to do imputation on each chromosome separately
 input = ARGV[0]
 
-plink = "/nfs/apollo/2/c2b2/users/saec/Software/plink-1.03-x86_64/plink"
+plink = "/ifs/home/c2b2/af_lab/saec/Software/plink-1.04-x86_64/plink"
 
 class Parallelizer
   attr_accessor 

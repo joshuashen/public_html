@@ -5,7 +5,8 @@ def main
   fam = ARGV[1]
   map = ARGV[2]
   if map == nil
-    map = "/ifs/home/c2b2/af_lab/saec/data/GenotypingPlatforms/Illumina1M/illumina1M.sorted.map"
+#    map = "/ifs/home/c2b2/af_lab/saec/data/GenotypingPlatforms/Illumina1M/illumina1M.sorted.map"
+    map = "/ifs/home/c2b2/af_lab/saec/data/GenotypingPlatforms/Illumina1M/illumina1M-Duov3.sorted.map"
   end
 
   snps = readSNPMap(map)

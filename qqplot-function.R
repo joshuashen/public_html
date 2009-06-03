@@ -37,8 +37,8 @@ pQQplot <- function(pvalfile=NULL, data = NULL)
   ranks <- (c(1:floor((2*length(pvals))^(1/2.1))/nsp))^2 
   ## make sure the rank is not below 1/length(pvals)
   ranks <- apply(cbind(ranks,rep((1+10^(-10))/length(pvals),length(ranks))),1,max)
- # exp <- c(1:length(pvals))/(length(pvals) + 1)
-  exp = runif(length(pvals))
+  exp <- c(1:length(pvals))/(length(pvals) + 1)
+  # exp = runif(length(pvals))
   quants <- unique(floor(sort(c(1:floor(topquant*length(pvals)/1000),length(pvals)*ranks))))
   quants <- quants[quants>0]
   o <- order(pvals)
