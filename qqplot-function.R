@@ -1,3 +1,6 @@
+# Yufeng Shen
+
+# modified from : 
 ## file: HistQQ.R
 ## author: Silviu-Alin Bacanu
 ## created: 6/22/2006
@@ -67,8 +70,8 @@ pQQplot <- function(pvalfile=NULL, data = NULL)
   limupper <- apply(cbind(explimit+qnorm((1-CIconf)/2,lower=F)*sqrt(varexp),rep(1-1/length(pvals)/10^5,length(unique(quants))) ),1,min)
   
   lines(-log10(explimit),-log10(explimit),lwd=2.5,col = "black")
-  lines(-log10(explimit),-log10(liminf),lwd=1.5,lty="dashed",col="blue")
-  lines(-log10(explimit),-log10(limupper),lwd=1.5,lty="dashed",col="blue")
+#  lines(-log10(explimit),-log10(liminf),lwd=1.5,lty="dashed",col="blue")
+#  lines(-log10(explimit),-log10(limupper),lwd=1.5,lty="dashed",col="blue")
 #  legend("bottomright", c("Expected", paste("Lower Bound ",100*CIconf," CI",sep=""),
 #                          paste("Upper Bound ",100*CIconf," CI",sep="")), 
 #         col = c("black","blue","blue"), lty = 1, lwd = 1)
