@@ -16,7 +16,7 @@ echo "combine the controls and do c vs c"
 awk '{if($6==1) print $1}' $original.fam > $original.fam.controls_FID 
 awk '{if($6==1) print $0}' $combined.fam > $combined.fam.controls
 
-plink --bfile $combined --keep $combined.fam.controls --geno 0.05 --maf 0.01 --mind 0.1 --hwe 0.0000001 --make-bed --out $combined.fam.controls_cvc 
+plink --bfile $combined --keep $combined.fam.controls --make-bed --out $combined.fam.controls_cvc 
 
 # change the phenotype status from 1 to 2 (control to case) for all matched controls 
 
@@ -25,7 +25,7 @@ perl ~/script/change-phenotype-for-matched_controls.pl $original.fam.controls_FI
 rm $combined.fam.controls_cvc.fam
 mv temp.fam $combined.fam.controls_cvc.fam 
 
-plink --bfile $combined.fam.controls_cvc --geno 0.05 --maf 0.01 --mind 0.1 --hwe 0.0000001 --assoc --adjust --out $combined.fam.controls_cvc_assoc
+plink --bfile $combined.fam.controls_cvc  --fisher --adjust --out $combined.fam.controls_cvc_fisher
 
 
  

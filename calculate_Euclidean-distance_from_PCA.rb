@@ -9,8 +9,8 @@ ca = ARGV[0]
 all = ARGV[1]
 evec = ARGV[2]
 
-$num = 4  ## num of eigen vectors considered important
-$range = 20 # number of controls that are close to the case
+$num = 3  ## num of eigen vectors considered important
+$range = 30 # number of controls that are close to the case
 
 $cases = {}
 $controls = {}
@@ -65,7 +65,7 @@ $cases.each_key do |ca|
     d[co] = euclidean($eigenscore[ca], $eigenscore[co], $eigenvals, $num)
   end
   array = d.keys.sort {|a,b| d[a] <=> d[b]}[0,$range]
-  1.upto(10) do |i|
+  1.upto(20) do |i|
     co = array[i-1]
     puts "#{ca}\tiid\t#{i}\t#{d[co]}\tz\t#{co}\tiid\t#{$cases[ca]}\t#{$controls[co]}"
   end
