@@ -5,8 +5,8 @@ def main
   fam = ARGV[1]
   map = ARGV[2]
   if map == nil
-#    map = "/ifs/home/c2b2/af_lab/saec/data/GenotypingPlatforms/Illumina1M/illumina1M.sorted.map"
-    map = "/ifs/home/c2b2/af_lab/saec/data/GenotypingPlatforms/Illumina1M/illumina1M-Duov3.sorted.map"
+    map = "/ifs/home/c2b2/af_lab/saec/data/GenotypingPlatforms/Illumina1M/illumina1M.sorted.map"
+#    map = "/ifs/home/c2b2/af_lab/saec/data/GenotypingPlatforms/Illumina1M/illumina1M-Duov3.sorted.map"
   end
 
   snps = readSNPMap(map)
@@ -42,6 +42,7 @@ def readReport(report,samples,snps)
     next unless cols.size > 10
     if cols[1] =~ /\S+/
       name = cols[1].tr(' ', '')
+      next unless samples.key?(name) 
       if name != lastName  ## a new sample
         printOne(gtype, lastName, samples,  snps)
         lastName = name
@@ -57,7 +58,7 @@ end
 def printOne(gtype, id, samples, snps)
 
   return if gtype.size < 1
-  return unless samples.key?(id)
+#  return unless samples.key?(id)
   $stderr.puts "Sample: #{id}"
   print samples[id], "\s"
   snps.each do |rs|
