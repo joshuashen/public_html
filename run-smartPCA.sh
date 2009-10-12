@@ -5,7 +5,7 @@
 #$ -S /bin/bash
 #
 
-bfile=$1   ## user provided 
+oriBfile=$1   ## user provided 
 
 plink=${HOME}"/Software/plink-1.04-x86_64/plink"
 
@@ -13,11 +13,24 @@ plink=${HOME}"/Software/plink-1.04-x86_64/plink"
 snpname="/ifs/home/c2b2/af_lab/saec/SJS/usr/ys/data/illumina1M.pedsnp"
 ##  "/nfs/apollo/2/c2b2/users/saec/SJS/usr/ys/data/illumina1M.pedsnp"
 
+## SNPs in long LD regions
+SNPsinlongLD="/ifs/home/c2b2/af_lab/saec/PopulationControls/PCA/SNPs-in-long-LD.list-Illumina-1M-Duo.rs"
+
 ## it would be better to set this in .bash_profile or .bash_rc
 path=${PATH}:${HOME}/Software/eigensoft/2.0/bin/
 
+
+bfiletemp=${oriBfile}"-4-PCA-temp"
+bfile=${oriBfile}"-4-PCA"
+
+# remove SNPs in long-LD region and prune 
+${plink}  --bfile ${oriBfile} --exclude ${SNPsinlongLD} --indep-pairwise 1500 150 0.2 --out ${bfiletemp}
+${plink} --bfile ${oriBfile} --extract  ${bfiletemp}".prune.in" --make-bed --out ${bfile}
+
+
 echo $bfile
 newSNPname=$bfile.bim.SNPs.pedsnp
+
 
 awk '{print $2}' $bfile.bim > $bfile.bim.SNPs
 fgrep -f $bfile.bim.SNPs $snpname -w > $newSNPname
@@ -36,6 +49,8 @@ logfile=${bfile}"_eigen.log"
 phenotype=$bfile"_eigen.pheno"
 eigenout=$bfile"_eigen.chisq"
 eigengeno=$bfile"_eigen.geno"
+
+twstats=$bfile"_eigen.twstats"
 
 # if [ -s ${genotypename} ] && [ -s ${indivname} ]; then
 #    echo "skip PLINK commands"
@@ -65,23 +80,6 @@ echo -e "snpweightoutname:\t"${componentOut} >> ${smartPCAPar}
 
 ${HOME}/Software/eigensoft/2.0/bin/smartpca -p ${smartPCAPar}
 
-# {$HOME}/Software/eigensoft/2.0/bin/smartpca.perl -i ${genotypename} -a ${newSNPname} -b ${indivname} -o ${pcaout} -p ${plotout} -e ${evaloutname} -l ${logfile}
+## significance of eigen vectors
 
-# perl ~/script/fam_to_pheno_for_eigenstrat.pl $bfile.fam > $phenotype
- 
-echo $genotypename "convert to eigenstrat format"
-
-## should separate SNPs according to chromosomes, do it in a loop, them merge. 
-
-echo -e "genotypename:\t"${genotypename} > ${par}
-echo -e "snpname:\t"${newSNPname} >> ${par}
-echo -e "indivname:\t"${indivname} >> ${par}
-echo -e "outputformat:\tEIGENSTRAT" >> ${par}
-echo -e "genotypeoutname:\t"${eigengeno} >> ${par}
-
-# ~/Software/eigensoft/2.0/bin/convertf -p ${par}
-
-# perl ~/Software/eigensoft/2.0/bin/eigenstrat.big.perl -i ${eigengeno} -j ${phenotype} -p ${pcaout} -l 10 -o ${eigenout}
-
- 
-date
+${HOME}/Software/eigensoft/2.0/bin/twstats -t ${HOME}/Software/eigensoft/2.0/POPGEN/twtable -i ${evaloutname} -o ${twstats}

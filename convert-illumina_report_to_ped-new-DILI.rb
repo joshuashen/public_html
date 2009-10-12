@@ -5,8 +5,8 @@ def main
   fam = ARGV[1]
   map = ARGV[2]
   if map == nil
-    map = "/ifs/home/c2b2/af_lab/saec/data/GenotypingPlatforms/Illumina1M/illumina1M.sorted.map"
-#    map = "/ifs/home/c2b2/af_lab/saec/data/GenotypingPlatforms/Illumina1M/illumina1M-Duov3.sorted.map"
+#    map = "/ifs/home/c2b2/af_lab/saec/data/GenotypingPlatforms/Illumina1M/illumina1M.sorted.map"
+    map = "/ifs/home/c2b2/af_lab/saec/data/GenotypingPlatforms/Illumina1M/illumina1M-Duov3.sorted.map"
   end
 
   snps = readSNPMap(map)
@@ -39,7 +39,7 @@ def readReport(report,samples,snps)
   gtype = {}
   File.new(report,'r').each do |line|
     cols =line.split(',')
-    next unless cols.size > 10
+#    next unless cols.size > 10
     if cols[1] =~ /\S+/
       name = cols[1].tr(' ', '')
       next unless samples.key?(name) 
