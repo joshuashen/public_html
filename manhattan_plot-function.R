@@ -1,10 +1,17 @@
-plotManhattan <- function(input=NULL, data=NULL)
+plotManhattan <- function(input=NULL, data=NULL, output=NULL)
 {
   if (is.null(data)) {
     assoc <- read.table(input, header=TRUE, na.strings = "NA")
   } else {
     assoc <- data
   }
+
+  if(is.null(output)) {
+    pdffile <- "Manhattan.pdf"
+  } else {
+    pdffile <- output
+ }
+
   chrs   <- c("1","2", "3", "4", "5", "6", "7", "8", "9" , "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23")
   chrsLabel   <- c("1","2", "3", "4", "5", "6", "7", "8", "9" , "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "X")
   maxs   <- c(0  ,0  ,0   ,0   ,0   ,0   ,0   ,0   ,0    ,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,   0)
@@ -24,7 +31,9 @@ plotManhattan <- function(input=NULL, data=NULL)
   if (ymaxx < 8 ) {
     ymaxx = 8
   }
-  
+
+  pdf(file = pdffile, width=12, height=4 , family="Helvetica")
+
   par(cex.lab=1.2)
   par(cex.axis=1.2)
   par(mar=c(5, 5, 2, 2)) # margins, bottom, left, top, right
@@ -45,15 +54,25 @@ plotManhattan <- function(input=NULL, data=NULL)
     
     ## big p-values:
     bigp = tt[tt$P>0.000001, ]
-    
+    noisep = bigp[bigp$P >= 0.05, ]
+    intermp = bigp[bigp$P < 0.05, ]
+## only plot 1 in 3 for all SNPs with p > 0.05
+   	
+    num = dim(noisep)[1]
+    rowlist = (1: floor(num/3))*3
+    bigp = rbind(noisep[rowlist, ], intermp)
+
+
+
     points(maxs[j]+bigp$BP,-log10(bigp$P), type="p", col=coll, pch = 20)
     
     xx = tt[tt$P<=0.000001, ]
     yy = tt[tt$P<=0.0000001, ]
     
-    points(maxs[j]+xx$BP, -log10(xx$P),  type="p", col="green", pch=20)
-    points(maxs[j]+yy$BP, -log10(yy$P),  type="p", col="red", pch=20)
+    points(maxs[j]+xx$BP, -log10(xx$P),  type="p", col="green", pch=19)
+    points(maxs[j]+yy$BP, -log10(yy$P),  type="p", col="red", pch=19)
   
-    par(new=T)
+#    par(new=F)
   }
+  dev.off()
 }
