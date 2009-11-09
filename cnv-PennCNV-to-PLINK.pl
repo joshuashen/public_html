@@ -43,16 +43,17 @@ open(OUT, ">$phenoOut") or die("Bad fam output: $phenoOut\n");
 open(IN, "$opt_phenotype") or die("Bad phenotype file $opt_phenotype\n");
 ## samples not in %penncnv hash will be ignored
 while(<IN>) {
-    if (/^(\S+)\s+(\S+)/) {
+    my $line= $_;
+    if ($line =~ /^(\S+)\s+(\S+)/) {
 	my $sample = $1;
-	my $phe = $2;
-	my $case = 2; # default is 2, which means case in PLINK
+#	my $phe = $2;
+#	my $case = 2; # default is 2, which means case in PLINK
 # 	print STDERR "$sample\n";
  	if ($samples{$sample}) {
-	    if ($phe eq 'control') {
-		$case = 1;  # control
-	    }
-	    print OUT "$sample\t$sample\t0\t0\t1\t$case\n";
+#	    if ($phe eq 'control') {
+#		$case = 1;  # control
+#	    }
+	    print OUT $line;
 	}
     }
 }
@@ -70,13 +71,18 @@ sub addperson {
     my ($file, @cols, $sampleName, $chr,$s,$e,$sites,$type, $out);
     $file =shift;
     $out = '';
-    if ($file=~/^(\S+)\./) {
+    if ($file=~/^(\S+)\.txt/) {
 	$sampleName = $1;
 	$samples{$sampleName} = 1;
     }
+    
     open(IN, $file) or die("bad penncnv file $file\n");
     while(<IN>) {
 	@cols = split(/\s+/, $_);
+#	if ($cols[4]=~ /^(\S+)\.txt/) {
+#	    $sampleName = $1;
+#	    $samples{$sampleName} =1;
+#	}
 	if ($cols[0]=~ /^chr(\S+)\:(\d+)\-(\d+)/) {
 	    $chr=$1;
 	    $s = $2;
@@ -90,7 +96,7 @@ sub addperson {
 	if ($cols[3]=~ /^state\d+\,cn=(\d+)/) {
 	    $type = $1;
 	}
-	$out  .= "$sampleName\t$sampleName\t$chr\t$s\t$e\t$type\t0\t$sites\n";
+	$out  .= "$sampleName\t1\t$chr\t$s\t$e\t$type\t0\t$sites\n";
     }
     close(IN);
     return $out;
