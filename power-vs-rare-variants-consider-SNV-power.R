@@ -1,82 +1,87 @@
 # also consider the power of SNV detection
 
-gsize = 3000000000  # genome size
-depthCov = 30
+# gsize = 3000000000  # genome size
+depthCov = 40
 targetSamples = 20
-totalBp = depthCov * gsize * targetSamples
-gshape = 8  ## shape parameters in Gamma distribution
+totalBp = depthCov * targetSamples
+
+gshape = 0.8  ## shape parameters in Gamma distribution
+
 minDepth = 3  # min Depth-coverage of a haploid for SNV detection
+
+minRefDepth = 1
 
 minPooledDepthInd = 1
 minPooledDepth = 3
 
-numCases <- c(20,40,60)
-totalCases <- 70
+#numCases <- c(20,40,60)
+numCases <- c(2:19) * 10
+# numCases <- c(20,30,40,50,60,70,80,90,100,)
+
+totalCases <- 200
 
 numControls <- 400
 
 # typeIerror <- 0.00000005
 typeIerror <- 0.000005
 
-m <- matrix(,nrow=0, ncol=19)
+maxShare = 100
 
-simulation = 1000 
+m <- matrix(,nrow=0, ncol=maxShare+1)
+colnames(m) = c("cov",1:maxShare)
 
+
+# simulation = 1000 
+
+# count = 0
 for (case in numCases){
-  depthCov = totalBp / gsize / case  
-  b = c(0, numControls)	
+  depthCov = totalBp / case
+  # count = count + 1
+#  rn[count] = paste(rn[count], round(depthCov,2), "-")
+ #  rn[count] = round(depthCov,2)
+  ## chance of having 3 or more reads covering the alternative allele and 2 or more reads covering the ref allele
+  palter = (1 - pnbinom(minDepth - 1, mu = depthCov/2, size = depthCov * gshape / 2)) *(1- pnbinom(minRefDepth - 1, mu = depthCov/2, size = depthCov * gshape / 2 ))
 
-# calculate min number of cases sharing a variant in order to get p-value < typeIerror 
+  
+  b = c(1, numControls -1)	
+  
+                                        # calculate min number of cases sharing a variant in order to get p-value < typeIerror 
   minSharing = 1
-  for (i in 2:case) {
-      a = c(i, case - i)
-      p = fisher.test(cbind(a,b))$p.value
-      if (p < typeIerror) {
-      	 minSharing = i
-      	 break
-      }
+  for (i in 1:case) {
+    a = c(i, case - i)
+    p = fisher.test(cbind(a,b))$p.value
+    if (p < typeIerror) {
+      minSharing = i
+      break
+    }
   }
   
-  power = rep(0,19)
+  power = c(round(depthCov, 2),rep(0,maxShare))
   
-
-  for (i in 1:19) {
-      if (i+1 < minSharing) {
-      	 power[i] = 0 
-      } else {
-		# number of cases that are carriers
-	 n = rbinom(simulation, i + 1, case / totalCases)
-
-         nn = 0
-         for (j in 1:simulation) {
-			# number of carriers 
-	    carriers = n[j]
-
-	    carriersDetected = 0
-	    if (n[j]>= minSharing) {
-	    # depth-coverage per base --> need to round
-	    dv = round(rgamma(n[j], gshape,  gshape / depthCov ) )
-
-	    hapDepth = rep(0, n[j])
-
-	    for (k in 1:n[j]) {
-	           hapDepth[k] = rbinom(1, dv[k], 0.5);
-            }
-
-            carriersDetected = length(hapDepth[hapDepth >= minDepth ])		
-    #if (sum(hapDepth) >= minPooledDepth ) {
-    #carriersDetected = length(hapDepth[hapDepth >= minPooledDepthInd])
-     #}
-
-     if (carriersDetected >= minSharing){
-     nn = nn + 1	
-        }
+  
+  for (i in minSharing:maxShare) {
+ #   if (i < minSharing) {
+ #     power[i] = 0 
+ #   } else {
+      # pdf of getting j carriers
+#      pd = dbinom(1:case, i, case/totalCases)
+    for (j in minSharing:case)  {
+                                        # for each instance of j carriers, compute the prob of having k detected
+      for (k in minSharing:j) {
+                                        # modeled as binomial: j trials, p  = palter
+        power[i+1] = power[i+1] + dbinom(j, i, case/totalCases) *dbinom(k, j, palter)
+        
+ #       }
       }
-     }
-     power[i] = round(nn / simulation, 2)
-   }
+      
+      
+      power[i+1] = round(power[i+1], 2)
+    }
   }
   m <- rbind(m, power)
 }
 
-write.table(t(m), "power-vs-rare_variants.txt", quote=FALSE, sep = "\t", row.names = F, col.names = F)
+rownames(m) = numCases
+
+
+write.table(t(m), "power-vs-rare_variants.txt", quote=FALSE, sep = "\t", row.names = T, col.names = T)

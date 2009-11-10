@@ -49,7 +49,7 @@ fgrep -f $tfile.map.SNPs $snpname -w > $newSNPname
 
 ## make indiv file
 # case
-cp ${tfile}.fam ${indivname}
+cp ${bfile}.fam ${indivname}
 
 
 echo -e "genotypename:\t"${genotypename} > ${smartPCAPar}
