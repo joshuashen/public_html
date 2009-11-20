@@ -61,8 +61,9 @@ tfile=${bfile}"_t"
     ${plink} --tped ${tfile}.tped --tfam ${tfile}.tfam  --out ${tfile} --recode  
     gawk '!/^#/{gsub(/[DI]/,"0"); print}' ${tfile}.ped > ${genotypename}
     
-    cp ${tfile}.tfam ${indivname}
+#    cp ${tfile}.tfam ${indivname}
 
+cp ${bfile}.fam ${indivname}
 
 echo -e "genotypename:\t"${genotypename} > ${smartPCAPar}
 echo -e "snpname:\t"${newSNPname} >> ${smartPCAPar}

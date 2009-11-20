@@ -53,7 +53,8 @@ fgrep -f $tfile.map.SNPs $snpname -w > $newSNPname
 # awk '{if($6==1 && $5==1) print $1"\tM\tControl"}' ${bfile}.fam >> ${indivname}
 # awk '{if($6==1 && $5==2) print $1"\tF\tControl"}' ${bfile}.fam >> ${indivname}
 
-cp ${tfile}.fam ${indivname}
+# cp ${tfile}.fam ${indivname}
+cp ${bfile}.fam ${indivname}
 
 
 echo -e "genotypename:\t"${genotypename} > ${smartPCAPar}

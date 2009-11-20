@@ -5,7 +5,9 @@ depthCov = 40
 targetSamples = 20
 totalBp = depthCov * targetSamples
 
-gshape = 0.8  ## shape parameters in Gamma distribution
+controlCarr = 1  # number of carriers in controls for a particular variant
+
+gshape = 0.6  ## shape parameters in Gamma distribution
 
 minDepth = 3  # min Depth-coverage of a haploid for SNV detection
 
@@ -15,10 +17,11 @@ minPooledDepthInd = 1
 minPooledDepth = 3
 
 #numCases <- c(20,40,60)
-numCases <- c(2:19) * 10
+numCases <- c(4:39) * 5
 # numCases <- c(20,30,40,50,60,70,80,90,100,)
 
 totalCases <- 200
+#totalCases <- 70
 
 numControls <- 400
 
@@ -40,10 +43,11 @@ for (case in numCases){
 #  rn[count] = paste(rn[count], round(depthCov,2), "-")
  #  rn[count] = round(depthCov,2)
   ## chance of having 3 or more reads covering the alternative allele and 2 or more reads covering the ref allele
-  palter = (1 - pnbinom(minDepth - 1, mu = depthCov/2, size = depthCov * gshape / 2)) *(1- pnbinom(minRefDepth - 1, mu = depthCov/2, size = depthCov * gshape / 2 ))
+#  palter = (1 - pnbinom(minDepth - 1, mu = depthCov/2, size = depthCov * gshape / 2)) *(1- pnbinom(minRefDepth - 1, mu = depthCov/2, size = depthCov * gshape / 2 ))
+  palter = 1 - pnbinom(minDepth - 1, mu = depthCov/2, size = depthCov * gshape / 2)
 
   
-  b = c(1, numControls -1)	
+  b = c(controlCarr, numControls - controlCarr)	
   
                                         # calculate min number of cases sharing a variant in order to get p-value < typeIerror 
   minSharing = 1
