@@ -8,8 +8,14 @@
 ca = ARGV[0]
 all = ARGV[1]
 nearest = ARGV[2]
+num  = ARGV[3]
 
-$numberMatching = 4  # choose 4 matching controls for each case
+if num != nil
+  $numberMatching = num.to_i  # choose 4 matching controls for each case
+else
+  $numberMatching = 4  # choose 4 matching controls for each case
+end
+
 $genderMatch = 0 # if 0, do not match gender
 $cases = {}
 $controls = {}
