@@ -42,7 +42,7 @@ sub looksnps {
     }
     close(GIN);
     my $num = scalar keys %pvalues;
-    print STDERR "Number of SNPs loaded: $num\n";
+    #print STDERR "Number of SNPs loaded: $num\n";
     return;
 }
 #assign LD-snps each SNP
@@ -87,7 +87,22 @@ sub assignGenes {
 	    if (exists $proxies{$rs}) {
 #		print STDERR "$rs\n";
 		foreach my $snp (keys %{$proxies{$rs}}) {
-		    print "$snp\t$rs\t$pvalues{$rs}\t$gene\t$proxies{$rs}{$snp}\n";
+		    my $minpvalue = 1.0;
+		    if (exists $pvalues{$rs} && exists $pvalues{$snp} ) { # both SNPs are on chip
+			# take the smaller p-value
+			$minpvalue = $pvalues{$rs};
+			if ($pvalues{$snp} < $minpvalue) {
+			    $minpvalue = $pvalues{$snp};
+			}
+		    } elsif (exists $pvalues{$rs}) {  # only $rs is on chip
+			$minpvalue = $pvalues{$rs};
+		    } elsif (exists $pvalues{$snp}) { # only $snp is on chip
+			$minpvalue = $pvalues{$snp};
+			
+		    }
+			# print the pvalue
+		    print "$snp\t$rs\t$minpvalue\t$gene\t$proxies{$rs}{$snp}\n";
+		   		   
 		}
 	    }
         }

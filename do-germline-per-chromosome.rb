@@ -2,7 +2,7 @@
 
 prefix=ARGV[0]
 
-chrs= Range.new(1,26).to_a 
+chrs= Range.new(1,22).to_a 
 
 ## split by chromosome
 
