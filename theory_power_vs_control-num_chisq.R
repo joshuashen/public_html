@@ -8,7 +8,7 @@ rr <- 1.5
 
 caseN <- 265
 
-maxT <- 100
+maxT <- 50
 
 controlN <- c(1:maxT) * caseN
 
