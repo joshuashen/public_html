@@ -1,23 +1,23 @@
 # also consider the power of SNV detection
 
 # gsize = 3000000000  # genome size
-depthCov = 40
+depthCov = 50
 targetSamples = 20
 totalBp = depthCov * targetSamples
 
-controlCarr = 1  # number of carriers in controls for a particular variant
+controlCarr = 0  # number of carriers in controls for a particular variant
 
 gshape = 0.6  ## shape parameters in Gamma distribution
 
 minDepth = 3  # min Depth-coverage of a haploid for SNV detection
 
-minRefDepth = 1
+minRefDepth = 0
 
 minPooledDepthInd = 1
 minPooledDepth = 3
 
 #numCases <- c(20,40,60)
-numCases <- c(4:39) * 5
+numCases <- c(20:160)
 # numCases <- c(20,30,40,50,60,70,80,90,100,)
 
 totalCases <- 200
@@ -30,8 +30,8 @@ typeIerror <- 0.000005
 
 maxShare = 100
 
-m <- matrix(,nrow=0, ncol=maxShare+1)
-colnames(m) = c("cov",1:maxShare)
+m <- matrix(,nrow=0, ncol=maxShare+2)
+colnames(m) = c("cov", "minCarriers" , 1:maxShare)
 
 
 # simulation = 1000 
@@ -54,13 +54,13 @@ for (case in numCases){
   for (i in 1:case) {
     a = c(i, case - i)
     p = fisher.test(cbind(a,b))$p.value
-    if (p < typeIerror) {
+    if (p <= typeIerror) {
       minSharing = i
       break
     }
   }
   
-  power = c(round(depthCov, 2),rep(0,maxShare))
+  power = c(round(depthCov, 2), minSharing, rep(0,maxShare))
   
   
   for (i in minSharing:maxShare) {
@@ -72,14 +72,16 @@ for (case in numCases){
     for (j in minSharing:case)  {
                                         # for each instance of j carriers, compute the prob of having k detected
       for (k in minSharing:j) {
+####  !! should be hypergeometric distribution: draw without replacement. 
                                         # modeled as binomial: j trials, p  = palter
-        power[i+1] = power[i+1] + dbinom(j, i, case/totalCases) *dbinom(k, j, palter)
+     #   power[i+2] = power[i+2] + dbinom(j, i, case/totalCases) *dbinom(k, j, palter)
+         power[i+2] = power[i+2] + dhyper(j, i, totalCases -i, case) *dbinom(k, j, palter)
         
  #       }
       }
       
       
-      power[i+1] = round(power[i+1], 2)
+      power[i+2] = round(power[i+2], 3)
     }
   }
   m <- rbind(m, power)
