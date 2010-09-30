@@ -19,7 +19,7 @@ File.new(input, 'r').each do |line|
     if map.key?(id)
       id = map[id]
     end
-    puts "#{id}\t#{info}"
+    puts "#{id} #{info}"
   end
 end
 

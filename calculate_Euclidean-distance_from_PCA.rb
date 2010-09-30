@@ -65,7 +65,7 @@ $cases.each_key do |ca|
     d[co] = euclidean($eigenscore[ca], $eigenscore[co], $eigenvals, $num)
   end
   array = d.keys.sort {|a,b| d[a] <=> d[b]}[0,$range]
-  1.upto(20) do |i|
+  1.upto($range) do |i|
     co = array[i-1]
     puts "#{ca}\tiid\t#{i}\t#{d[co]}\tz\t#{co}\tiid\t#{$cases[ca]}\t#{$controls[co]}"
   end
