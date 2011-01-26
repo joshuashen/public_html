@@ -38,7 +38,7 @@ def readReport(report,samples,snps)
   lastName = ''
   gtype = {}
   File.new(report,'r').each do |line|
-    cols =line.split(',')
+    cols =line.chomp.split(',')
 #    next unless cols.size > 10
     if cols[1] =~ /\S+/
       name = cols[1].tr(' ', '')

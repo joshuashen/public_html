@@ -1,0 +1,6 @@
+01/26/2011
+
+// test vt engine: 
+
+[saec@gaianode-0-1 genes011_VT-test]$ ruby ~/code/ExomePipe/association/vt-test-engine.rb -a ../../test3.ind -b vcf.BAT2.csnp -c vcf.BAT2.cgeno -o test.out -g BAT2 -d  ~/code/ExomePipe/association 
+
