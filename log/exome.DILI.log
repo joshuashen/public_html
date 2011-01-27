@@ -4,3 +4,6 @@
 
 [saec@gaianode-0-1 genes011_VT-test]$ ruby ~/code/ExomePipe/association/vt-test-engine.rb -a ../../test3.ind -b vcf.BAT2.csnp -c vcf.BAT2.cgeno -o test.out -g BAT2 -d  ~/code/ExomePipe/association 
 
+[saec@login4 association]$ grep PASS test3.vcf | awk '{print "chr"$1":"$2" "$4"/"$5}' > test3.vcf.for-polyphen.txt
+
+
