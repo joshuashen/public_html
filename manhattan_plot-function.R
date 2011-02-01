@@ -27,15 +27,15 @@ plotManhattan <- function(input=NULL, data=NULL, output=NULL)
   
   m<-max(maxs)
 
-  ymaxx = max(-log10(assoc$P)) + 0.5
+  ymaxx = max(-log10(assoc$P)) + 1
   if (ymaxx < 8 ) {
     ymaxx = 8
   }
 
-  pdf(file = pdffile, width=12, height=4 , family="Helvetica")
+  pdf(file = pdffile, width=16, height=8 , family="Helvetica")
 
-  par(cex.lab=1.2)
-  par(cex.axis=1.2)
+  par(cex.lab=1.0)
+  par(cex.axis=0.9)
   par(mar=c(5, 5, 2, 2)) # margins, bottom, left, top, right
   plot(c(0,0),c(0,0), xlim=c(0,m), ylim=c(0,ymaxx), type="o", col="1",  axes=FALSE, xaxs="i",yaxs="i",  xlab="Chromosome", ylab="-log10(p-value)")
   axis(1, labels=chrsLabel, at=tics)
