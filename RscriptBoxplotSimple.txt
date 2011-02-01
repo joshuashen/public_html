@@ -1,0 +1,57 @@
+###grayscale plots
+## setwd("C:/Users/mhu/Documents/DataAnalysis/")
+qc<-read.table("Desktop/DataTable.csv",header=T,as.is=T,sep=",")
+# attach(qc)
+
+# number of Data columns in the table
+ndata <- dim(qc)[2] - 3
+      
+
+u=unique(qc$Condition)
+width=ndata*(length(unique(paste(qc$Condition,qc$SubCondition)))+length(u)+1)+10
+cl<-rainbow(2*ndata)#color scale
+
+par(mar=c(6,3,2,2))
+
+
+datashift <- 0
+miny = min(qc[,4:(ndata+3)])
+if (miny > 0) {
+
+miny = miny*1
+} 
+
+yl <- range(c(miny , max(qc[,4:(ndata+3)])))
+
+for (j in 1:ndata) {
+        Data = qc[,3+j]
+
+    	k<-0	
+
+for(i in 1:length(u))
+{
+ids<-which(qc[,2]==u[i])
+UL<-length(unique(qc$SubCondition[ids]))
+boxplot(Data[ids]~qc$SubCondition[ids],pch=15,cex=.2,border="black",lwd=1,ylab="Data",ylim=yl,xlim=c(0,width),at=c((k+1):(k+UL))+(j-1)*2*UL + datashift,col=cl[(j-1)*2+i],las=2,cex.axis=1)
+k<-k+UL+1
+par(new=T)
+#if (i!=length(u)) par(new=T)
+}
+
+datashift <- datashift + UL
+#par(new=F)
+if (j!=ndata) par(new=T)
+}
+
+title("Data series by condition")
+
+larray = c()
+for (i in 1:ndata) {
+    for (j  in 1:length(u)) {
+
+    larray = c(larray,  paste(colnames(qc)[3+i], " ",  u[j]))
+    
+    }
+
+}
+legend("right", larray, fill = cl)
