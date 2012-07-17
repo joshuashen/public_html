@@ -1,0 +1,246 @@
+body {
+	font: 100% Georgia, Times, Serif;
+	font-size: 1em;
+	background: #777; 
+	margin: 5px; 
+	padding: 0;
+	text-align: center; 
+	color: #555555;
+}
+ 
+#container {
+	width: 900px;  
+	background-image: url(images/Columbia_logo_150px.png);  
+	background-position: 710px 30px;
+	background-repeat: no-repeat; 
+	
+	background-color: #fff;
+	
+	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
+	text-align: left; 
+	font-family: Verdana, "Lucida Grande", Sans-Serif;
+}
+
+
+#logo {
+
+float: right;
+margin-right: 100px;
+z-index: 1; 
+
+}
+
+
+#face {
+float: right;
+margin-right: 60px;
+
+}
+
+
+ #header {
+	#background: #1d4e91;
+/*	background: #FFFFFF;; */
+
+	
+	padding: 0px;
+	padding-top: 30px;
+    color: #333333;
+}
+ #header h1 {
+     margin: 0; 
+     padding-left: 120px; 
+     text-align: left;
+     font-size: 2.5em;
+     font-family: "IM FELL Great Primer", Georgia, Serif;
+     font-weight: bold;
+ }
+
+ #mainContent {
+     padding: 40px; 
+     margin-left: 40px;
+     margin-right: 40px;
+     
+   /*  background: #FFFFFF; */
+  /*   background-color: 'transparent'; */
+}
+ #footer { 
+	padding: 40px; 
+
+	margin-left: 40px;
+     margin-right: 40px;
+  /*   background-image: url(images/Columbia_logo_200px.png);   */
+	background-position: 40px 120px;
+	background-repeat: no-repeat; 
+	
+	
+	/*background: #FFFFFF;*/
+} 
+
+#footer h3 {
+	font-size: 1.4em;
+	
+    font-family:  Georgia, Serif;
+
+}
+
+
+ #footer p {
+/*	margin-left: 200px;  */
+	font-size: 0.9em;
+	text-align: left;
+	color: #999;
+	margin: 10px;
+}
+ #container #header div p {
+	font-size: 1em;
+}
+ #container #header table {
+	font-size: 1em;
+}
+
+#menu
+{
+        padding: 0;
+        margin-bottom: 0px;
+        margin-right: 80px;
+        margin-left: 80px;
+    font-size: 1em;
+    font-family:  "IM FELL Great Primer", Georgia, Serif;
+
+/*      background-color: #476ea5; */
+        border-bottom: solid 1px gray;
+}
+
+#menu div
+{
+        clear: both;
+        margin: 0px;
+        padding: 0px;
+}
+
+#menu ul
+{
+        display: block;
+        position: relative;
+        top: 1px;
+        list-style: none;
+        padding: 0px, 0px, 0px, 0px;
+        margin-bottom: 0px;
+}
+        
+#menu ul li
+{
+        position: relative;
+        float: left;
+        border: solid 1px gray;
+        border-bottom: 0px;
+        margin-right: 10px; 
+}
+
+#menu ul li a
+{
+        display: block;
+        padding: 5px 5px 7px 5px;
+        text-decoration: none;
+        background-color: inherit;
+        color: #C85A17; 
+}
+
+#menu ul li a:hover
+{
+/*	background-color: #FAF8CC; */
+	color: red;
+}
+
+#menu ul li.active, #menu ul li.active a, #menu ul li.active a:hover
+{
+	background-color: #ffffff;
+	color: #000000;
+	border-top: solid 1.5px black;
+
+}
+
+#mainContent h2
+{
+	font-size: 1.8em;
+	margin-bottom: 1em;
+	margin-top: 1em;
+    font-family:  Georgia, Serif;
+}
+
+#mainContent h3
+{
+	font-size: 1.4em;
+	
+    font-family:  Georgia, Serif;
+
+/* 	color: #1d4e91; */
+
+}
+
+#mainContent h4
+{
+	font-size: 1.2em;
+	
+    font-family:  Georgia, Serif;
+/* 	color: #476ea5; */
+}
+
+#mainContent p
+{
+	text-align: left;
+  /*  font-size: 1em; */
+	margin: 10px;
+
+}
+
+#mainContent ul
+{
+/*	list-style: disc; */
+/*	padding-left: 40px;
+	padding-right: 15px;
+	margin-bottom: 30px; */
+}
+
+#mainContent ul li
+{
+        margin-bottom: 10px;
+}
+
+
+#mainContent ol
+{
+	/* line-height: 16px;         */
+}
+
+#mainContent ol li
+{
+        margin-bottom: 10px;
+}
+
+.floatright 
+{
+	float: right; 
+	padding:2px 0px 8px 20px; 
+	margin: 0; 
+}
+
+.floatleft
+{
+	float: left; 
+	padding:2px 20px 8px 0px; 
+	margin: 0; 
+}
+
+.floatcenter
+{
+	float: center;
+	padding:2px 20px 8px 20px; 
+	margin: 0; 
+}
+
+a:hover{
+
+background-color: #FAF8CC;
+}
