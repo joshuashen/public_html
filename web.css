@@ -240,6 +240,17 @@ margin-right: 60px;
 	margin: 0; 
 }
 
+.cleaner{clear: left; line-height: 0; height: 0;} 
+
+
+.people img{
+border:none;
+  
+ float: left;
+ padding: 0px 20px;
+
+}
+
 a:hover{
 
 background-color: #FAF8CC;
