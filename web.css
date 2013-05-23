@@ -49,9 +49,9 @@ margin-right: 60px;
 }
  #header h1 {
      margin: 0; 
-     padding-left: 120px; 
+     padding-left: 80px; 
      text-align: left;
-     font-size: 2.5em;
+     font-size: 2em;
      font-family: "IM FELL Great Primer", Georgia, Serif;
      font-weight: bold;
  }
