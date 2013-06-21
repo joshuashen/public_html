@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="description" content="The Shen Lab - Laboratory of Yufeng Shen, Ph.D. - Center for Computational Biology and Bioinformatics, Columbia Initiative in Systems Biology, and Department of Biomedical Informatics, Columbia University - Research areas: genome sequencing, genome assembly, computational genomics, statistical genetics, pharmacogenomics" />
+<meta name="keywords" content="Shen, Columbia University, Computational Genomics, Bioinformatics, Genomics, Genome, Sequencing, Pharmacogenomics" />
+
+<title>Shen Lab | Home</title>
+<link rel="stylesheet" type="text/css" href="web.css">
+</head>
+
+<body>
+
+<div id="container">
+  
+  <div id="header">          
+
+	
+        
+        
+      <h1>Shen Lab of Computational Genomics</h1>
+
+
+
+    <div id="menu">
+      <ul>
+      <li class="active"><a href="index.html">Home</a></li>
+      <li><a href="people.html">People</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="papers.html">Papers</a></li>
+      <li><a href="software.html">Software</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div></div>
+    </div>
+  </div>
+
+
+  	
+          
+          
+  <div id="mainContent">
+
+
+
+    <p>Welcome to the Shen Lab at Columbia University. Our research is at the interface of biology, statistics, and computer science. The long-term goal is to study human genetics and diseases by developing new methodologies in computational genomics. Specific areas of interest include genome sequencing {<a title="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2813483/" href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2813483/"  >Shen et al 2010</a>; <a title="http://www.ncbi.nlm.nih.gov/pubmed/21636589" href="http://www.ncbi.nlm.nih.gov/pubmed/21636589"  >Shen et al 2011</a>} and assembly {<a title="http://www.ncbi.nlm.nih.gov/pubmed/17095691" href="http://www.ncbi.nlm.nih.gov/pubmed/17095691"  >Sodergren et al 2006</a>}, genetic mapping of disease genes {<a title="http://www.ncbi.nlm.nih.gov/pubmed/21570397" href="http://www.ncbi.nlm.nih.gov/pubmed/21570397"  >Lucena et al 2011</a>}, immune response, genomics of cancer metastasis, and pharmacogenomics {<a title="http://www.ncbi.nlm.nih.gov/pubmed/21221126" href="http://www.ncbi.nlm.nih.gov/pubmed/21221126"  >Shen et al 2011</a>}. </p>
+      
+    <p> &nbsp; </p>
+      <table width="760" border="0" align="center">
+        <tr>
+          <td><a href="http://www.ncbi.nlm.nih.gov/pubmed/21570397"><img src="images/AC_DILI_MHC.png" height="250" border="0" /></a></td>
+          <td><a href="http://www.ncbi.nlm.nih.gov/pubmed/18421352"><img src="images/nature2008-f1.png" height="400" border="0" /></a></td>
+
+        </tr>
+      </table>
+
+
+
+      <div class='cleaner'> <p>&nbsp; </p> </div>
+      <div id="positions">
+      
+      <h3>Open positions</h3>
+      
+
+	
+<p>We have openings for: 
+<ul>
+ <li> Postdoc fellows </li>
+ <li> Graduate students  </li>
+ <li> Undergraduate students </li>
+ <li> Scientific programmer </li>
+</ul>
+</p>
+
+<p>Please contact <a href="mailto:&#121;&#115;&#050;&#052;&#049;&#049;&#064;&#099;&#111;&#108;&#117;&#109;&#098;&#105;&#097;&#046;&#101;&#100;&#117;">Yufeng</a>  for details.</p>
+
+<h4>Open postdoc positions</h4>
+<ol>
+<li><em>Computational genomics in cancer</em>: Developing computational and statistical methods to integrate genomic mutations and gene expression, and analyze such data in cancer genomic studies to identify driver mutations, learn the mechanism of tumor evolution, heterogeneity and progression, and collaborate with clinicians to improve personalized treatment. The postdoc will participate or lead the analysis of large scale cancer genomics studies carried out by Columbia Genome Center and collaborators.  The ideal candidate would have background in cancer genomics or systems biology, with strong programming and analytical skills. </li>
+
+<li><em>Statistical and computational genetics</em>: The project involves development of new computational and statistical approaches to analyze large-scale genome sequencing data in genetic studies of human complex diseases. We have access to unique datasets designed for reveal the complete genetic architecture of congenital heart diseases and other complex traits. Our lab is an interdisciplinary environment, the postdoc will participate in the experimental design of the data, work side by side with biological and clinical collaborators. The ideal candidate would have training in both human genetics and statistics or computer science, and have demonstrated empirical data analysis skills. </li>
+
+</ol>
+
+<h4>Graduate students</h4>
+
+<p>Interested prospective students should contact me for details. Graduate students may join the lab through either <a href="http://www.c2b2.columbia.edu/?q=node/11">C2B2 Graduate Program</a> or <a href="http://www.dbmi.columbia.edu/education/applicant_information.html">Department of Biomedical Informatics</a> PhD program</p>
+
+<h4>Undergraduates or master students</h4>
+
+<p>If you are an undergraduate or master student interested in gaining research experience to prepare for graduate schools, please contact me directly to discuss possible projects. Students with good programming skills or mathematical background are particularly encouraged to apply. </p>
+
+
+      
+      </div>
+
+
+
+
+
+  
+  <div id="footer">
+  <h3>Affilliations</h3>
+
+     <p float="right"><a href="http://www.c2b2.columbia.edu/">Center for Computational Biology and Bioinformatics</a><br />
+            <a href="http://sbi.c2b2.columbia.edu">Columbia Initiative in Systems Biology</a>,<br />
+            and <a href="http://www.dbmi.columbia.edu/">Department of Biomedical Informatics</a><br />
+            Columbia University <br />
+            1130 St Nicholas Avenue<br />
+            New York, New York 10032</p>
+            
+            
+            
+            </div>
+</div>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-400081-5";
+urchinTracker();
+</script>
+
+
+</body>
+</html>

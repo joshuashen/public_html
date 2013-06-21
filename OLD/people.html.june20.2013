@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<meta name="description" content="The Shen Lab - Laboratory of Yufeng Shen, Ph.D. - Center for Computational Biology and Bioinformatics, Department of Systems Biology, and Department of Biomedical Informatics, Columbia University - Research focus: DNA sequencing, genome assembly computational genomics, statistical genetics, pharmacogenomics" />
+<meta name="description" content="The Shen Lab - Laboratory of Yufeng Shen, Ph.D. - Center for Computational Biology and Bioinformatics, Columbia Initiative in Systems Biology, and Department of Biomedical Informatics, Columbia University - Research focus: DNA sequencing, genome assembly computational genomics, statistical genetics, pharmacogenomics" />
 <meta name="keywords" content="Shen, Columbia University, Computational Genomics, Bioinformatics, genomics, genome, sequencing, pharmacogenomics" />
 
 <title>Shen Lab | People</title>
@@ -56,6 +56,20 @@
 
     <h4>Postdocs and Research Scientists</h4>
 
+    <div class="people"> 
+
+<p>	
+	<img src="images/CaseyOverby.jpg" />
+	
+	<strong>Casey Overby</strong>, PhD <br />
+	NLM postdoc fellow.  Pharmacogenomics, precision medicine<br />
+	
+      </p>
+  
+      <div class='cleaner'> <p>&nbsp; </p></div>  
+      
+    </div>
+    
     <div class="people">
       <p>
 	<img src="images/badri.jpg" /><strong>Badri Vardarajan</strong>, PhD</br>
@@ -88,7 +102,7 @@
 
     <div class="people">
       <p><img src="images/Boris.jpg" /><strong><a href="http://www.columbia.edu/~bg2178/">Boris Grinshpun</a></strong></br>
-	PhD student in C2B2. Computational genomics, mathematical modeling of T cell repertoire repertoire <br />
+	Computational genomics, mathematical modeling of T cell repertoire repertoire <br />
       </p>
       <div class='cleaner'> </div>
     </div>
@@ -125,7 +139,7 @@
     
     <div class='people'>  
       <p><strong>Edwin Lin</strong><br />
-	Research Assistant. Genome sequencing, T cell receptor repertoire</p>
+	Master student in biotechnology. Genome sequencing, T cell receptor repertoire</p>
       <div class='cleaner'> <p>&nbsp; </p> </div>
 
     </div>
@@ -140,10 +154,14 @@
     
 
     <h4>Former Lab Members</h4>
-    <p><strong>Casey Lynnette Overby</strong>, PhD. Postdoc from 2011 to 2013. Now an Assistant Professor, Program in Personalized and Genomic Medicine, at University of Maryland</p>
-    <p><strong>Yaping Feng</strong>, PhD. Postdoc from 2011 to 2012. Now a Bioinformatics Scientist at Waksman Genomics Core Facility, Rutgers University</p>
-    <p><strong>William DeWitt</strong>, Scientific programmer from 2011 to 2012, now a Senior Bioinformatics Scientist at Adaptive Biotechnologies Corp. </p>
-    <p><strong>Angad Singh</strong>, Research associate from 2012 to 2013, now a Bioinformatics Scientist at Novartis </p>
+
+    <p><strong>Yaping Feng</strong>, PhD, postdoc, 2011-2012, now a Bioinformatics Scientist at Waksman Genomics Core Facility, Rutgers University</p>
+    
+    <p><strong>William DeWitt</strong>, Scientific programmer, 2011-2012, now a Senior Bioinformatics Scientist at Adaptive Biotechnologies Corp. </p>
+    
+    <p><strong>Angad Singh</strong>, Research associate, 2012-2013, now a Bioinformatics Scientist at Novartis </p>
+    
+
     
     <div class='cleaner'> <p>&nbsp; </p> </div>
   
@@ -155,7 +173,7 @@
 
 
 <div id="footer">
- <p> <center>Updated: 06/2013</center> </p>
+ <p> <center>Updated: 05/2013</center> </p>
 </div>
 
 </div>
