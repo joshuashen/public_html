@@ -1,4 +1,0 @@
-10       6      *       *       *       sh /u/1/y/ys2411/public_html/rss/fetchxml.sh > /dev/null 2>&1
-0       12      *       *       *       sh /u/1/y/ys2411/public_html/rss/fetchxml.sh > /dev/null 2>&1
-## SunOS mango 5.9 Generic_122300-59 sun4u sparc SUNW,Sun-Fire-V240 Solaris
-

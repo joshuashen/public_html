@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <Meta http-equiv="Content-Style-Type" content="text/css">
+  <title>CANOES | detecting CNVs from exome sequencing</title>
+  <style type="text/css">
+  body {
+   font-family: Georgia, serif;
+   font-size: 1em;
+   padding: 60px;
+  }
+  code {
+   font-family: Consolas, Monaco, Courier;
+   font-size: 13px;
+   padding-left: 4px;
+   background: #ffff99;
+  }  
+  li {
+    margin-bottom: 1em;
+  }
+  </style>
+</head>
+<body>
+
+<h1><i>CANOES</i></h1> 
+
+<h3>Detecting CNVs from exome sequencing data</h3>
+
+<p>Download: <a href="Canoes-v0.9.tar.gz">CANOES v0.9</a> 
+</p> 
+
+<h4>Notes</h4>
+<p>
+The program requires 3 input files: <br /> <ol>
+<li>Reference fasta file </li>
+<li>list of BAM files </li>
+<li>Parameter file with genome type, prior estimated number of CNVs, average CNV size, depth coverage, and read size</li>
+</ol>
+
+<h4>Running the program</h4>
+
+</p>
+
+<h4>Contact</h4>
