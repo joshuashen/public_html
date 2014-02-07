@@ -1,32 +1,37 @@
 # DEPENDENCIES
 #    nnls, Hmisc, mgcv, plyr
 
-# comment and add error checking for genotype function
-# fill out Test--should write xcnv file
-# should also do genotyping, genotyping should do error checking
-# should plot all CNVs to pdf
- 
-Test <- function(cluster3.counts){
-  # load counts file
-  #cluster3.counts <- read.table("/Users/daniel/CANOES_sample_data.txt", sep="\t", header=T)
-  
-  # extract sample names (they are in columns 6:end)
-  sample.names <- names(cluster3.counts)[-seq(1,5)]
-  # call CNVs in first 15 samples
+Test <- function(){
+  # read in the data
+  gc <- read.table("gc.txt")$V2
+  canoes.reads <- read.table("canoes.reads.txt")
+  # rename the columns of canoes.reads
+  sample.names <- paste("S", seq(1:26), sep="")
+  names(canoes.reads) <- c("chromosome", "start", "end", sample.names)
+  # create a vector of consecutive target ids
+  target <- seq(1, nrow(canoes.reads))
+  # combine the data into one data frame
+  canoes.reads <- cbind(target, gc, canoes.reads)
+  # call CNVs in each sample
+  # create a vector to hold the results for each sample
   xcnv.list <- vector('list', length(sample.names))
-  for (i in 1:5){
-    xcnv.list[[i]] <- CallCNVs(sample.names[i], cluster3.counts) 
+  for (i in 1:length(sample.names)){
+    xcnv.list[[i]] <- CallCNVs(sample.names[i], canoes.reads) 
   }
+  # combine the results into one data frame
   xcnvs <- do.call('rbind', xcnv.list)
+  # inspect the first two CNV calls
+  print(head(xcnvs, 2))
   # plot all the CNV calls to a pdf
   pdf("CNVplots.pdf")
   for (i in 1:nrow(xcnvs)){
-     PlotCNV(cluster3.counts, xcnvs[i, "SAMPLE"], xcnvs[i, "TARGETS"])
+     PlotCNV(canoes.reads, xcnvs[i, "SAMPLE"], xcnvs[i, "TARGETS"])
   }
   dev.off()
-  # genotype all the called CNVs in one sample
-  genotyping.S2 <- GenotypeCNVs(xcnvs, "S2", cluster3.counts)
-  browser()
+  # genotype all the CNVs calls made above in sample S2
+  genotyping.S2 <- GenotypeCNVs(xcnvs, "S2", canoes.reads)
+  # inspect the genotype scores for the first two CNV calls
+  print(head(genotyping.S2, 2))
 }
 
 # Constants
@@ -139,7 +144,7 @@ PlotCNV <- function(counts, sample.name, targets, offset=1){
 #      TARGETS: target numbers of CNV in the form start..stop
 #      NUM_TARG: how many targets are in the CNV
 #      Q_SOME: a Phred-scaled quality score for the CNV
-CallCNVs <- function(sample.name, counts, p=1e-08, Tnum=6, D=70000, numrefs=30, get.dfs=F){
+CallCNVs <- function(sample.name, counts, p=1e-08, Tnum=6, D=70000, numrefs=30, get.dfs=F, homdel.mean=0.2){
   if (!sample.name %in% names(counts)){stop("No column for sample ", sample.name, " in counts matrix")}
   if (length(setdiff(names(counts)[1:5], c("target", "chromosome", "start", "end", "gc"))) > 0){
     stop("First five columns of counts matrix must be target, chromosome, start, end, gc")
@@ -229,6 +234,11 @@ CallCNVs <- function(sample.name, counts, p=1e-08, Tnum=6, D=70000, numrefs=30, 
       cnvs$Q_SOME[i] <- ifelse(cnvs$CNV[i]=="DEL", qualities[i, "SQDel"], 
                                qualities[i, "SQDup"])
     }
+  }
+  data <- as.data.frame(cbind(counts$target, counts$mean, var.estimate$var.estimate, counts[, sample.name]))
+  names(data) <- c("target", "countsmean", "varestimate", "sample")
+  if (nrow(cnvs) > 0){
+    cnvs <- CalcCopyNumber(data, cnvs, homdel.mean)
   }
   return(cnvs)
 }
@@ -368,8 +378,11 @@ GetDistances <- function(counts){
 EstimateVariance <- function(counts, ref.sample.names, sample.weights){
   library(Hmisc)
   counts$var <- apply(counts[, ref.sample.names], 1, wtd.var, sample.weights, normwt=T)
+  set.seed(1)
   counts.subset <- counts[sample(nrow(counts), min(36000, nrow(counts))), ]
   library(mgcv)
+  # can't do gamma regression with negative 
+  counts.subset$var[counts.subset$var==0] <- 0.1 
   fit <- gam(var ~ s(mean) + s(gc), family=Gamma(link=log), data=counts.subset)
   # we don't want variance less than Poisson
   # we take maximum of genome-wide estimate, method of moments estimate
@@ -638,7 +651,7 @@ PrintCNVs <- function(test.sample.name, viterbi.state,
   if (num.deletions == 0 & num.duplications == 0){
     df <- data.frame(SAMPLE=character(0), CNV=character(0), INTERVAL=character(0), 
                      KB=numeric(0), CHR=character(0), 
-                     MID_BP=numeric(), TARGETS=character(0), NUM_TARG=numeric(0), Q_SOME=numeric(0))
+                     MID_BP=numeric(), TARGETS=character(0), NUM_TARG=numeric(0), Q_SOME=numeric(0), MLCN=numeric(0))
     return(df)
   }
   if (num.deletions > 0 & num.duplications > 0){
@@ -647,11 +660,41 @@ PrintCNVs <- function(test.sample.name, viterbi.state,
     ifelse(num.deletions > 0, 
            cnvs.df <- deletions.df, cnvs.df <- duplications.df)
   }
-  xcnv <- cnvs.df[, c("sample.name", "cnv.type", "cnv.interval", 
+  xcnv <- cbind(cnvs.df[, c("sample.name", "cnv.type", "cnv.interval", 
                       "cnv.kbs", "cnv.chromosome", "cnv.midbp", 
-                      "cnv.targets", "num.targets")]
+                      "cnv.targets", "num.targets")], 0)
   colnames(xcnv) <- c("SAMPLE", "CNV", "INTERVAL", "KB", "CHR", "MID_BP", "TARGETS",
-                      "NUM_TARG")
+                      "NUM_TARG", "MLCN")
   xcnv$Q_SOME <- NA
   return(xcnv)
+}
+
+CalcCopyNumber <- function(data, cnvs, homdel.mean){
+  for (i in 1:nrow(cnvs)){
+    cnv <- cnvs[i, ]
+    targets <- as.numeric(unlist(strsplit(as.character(cnv$TARGETS), "..", fixed=T)))
+    cnv.data <- subset(data, target >= targets[1] & target <= targets[2])
+    state.target.means <- t(apply(data.frame(x=cnv.data$countsmean), 1, 
+                                  function(x) c(C1=x*1/2, C2=x, C3=x*3/2, 
+                                                C4=x * 2, C5=x * 5/2, C6=x*6/2)))
+    # calculate the expected size (given the predicted variance)
+    size <- cnv.data$countsmean ^ 2 / (cnv.data$varestimate - cnv.data$countsmean)
+    emission.probs <- matrix(NA, nrow(cnv.data), 7)
+    colnames(emission.probs) <- c("C0", "C1", "C2", "C3", "C4", "C5", "C6")
+    #colnames(emission.probs) <- c("target", "delprob", "normalprob", "dupprob")
+    # calculate the emission probabilities given the read count
+    emission.probs[, 1] <- dpois(cnv.data$sample, homdel.mean, log=T)
+    for (s in 1:6){
+      size.state <- size * s/2
+      emission.probs[, s+1] <- dnbinom(cnv.data$sample, mu=state.target.means[, s], 
+                                       size=size.state, log=T)
+    }
+    cs <- colSums(emission.probs)
+    ml.state <- which.max(cs) - 1
+    if (ml.state==2){
+      ml.state <- ifelse(cnv$CNV=="DEL", 1, 3)
+    }
+    cnvs$MLCN[i] <- ml.state
+  }  
+  return(cnvs)
 }
