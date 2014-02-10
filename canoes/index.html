@@ -31,8 +31,8 @@
 <p>To run CANOES, you will need</p>
 
 <ol><li>bedtools, available from <a href="http://bedtools.readthedocs.org/en/latest/">http://bedtools.readthedocs.org/en/latest/</a></li>
-<li>R, with packages nnls, Hmisc, mgcv and plyr installed.  You can install these by executing the folllowing command:  <code>install.packages(c("nnls", "Hmisc", "mgcv", "plyr")</code>.  </li>
-<li><a href="gc.py">gc.py </a> (beta version)</li>
+<li>R, with packages nnls, Hmisc, mgcv and plyr installed.  You can install these by executing the following command:  <code>install.packages(c("nnls", "Hmisc", "mgcv", "plyr"))</code>.  </li>
+<li>GATK</li>
 <li><a href="CANOES.R">CANOES.R</a></li>
 </ol><p>CANOES requires a data frame with the coordinates, GC content and read count per sample for each exome capture region.</p>
 
@@ -43,18 +43,18 @@
 
 <p>Make sure the contig names in probes.bed correspond to those in the header of the bam files.  The above command will save the read counts in the file canoes.reads.txt.</p>
 
-<p>If FASTA is the path to your reference file, and FASTA.fai is the associated FASTA index file, enter the following command at the LINUX prompt to use gc.py to calculate the GC content for each exome capture region:</p>
+<p>If FASTA is the path to your reference file and TEMP is a temporary directory, enter the following command at the LINUX prompt to use GATK to calculate the GC content for each exome capture region:</p>
 
-<pre><code>&gt; ./gc.py probes.bed FASTA gc.txt
+<pre><code>&gt; java -Xmx2000m -Djava.io.tmpdir=TEMP -jar ./Sting/dist/GenomeAnalysisTK.jar -T GCContentByInterval -L probes.bed -R FASTA -o gc.txt
 </code></pre>
 
-<p>Again, the contig names in probes.bed should correspond to those in the FASTA.fai file.  (The current version of gc.py may not work with all contig naming conventions).</p>
+<p>Again, the contig names in probes.bed should correspond to those in the FASTA.fai file.  </p>
 
 <p>We can then use R to stitch together a data frame with all the required information for CANOES.  You can follow along with the two sample files <a href="gc.txt">gc.txt</a> and <a href="canoes.reads.txt">canoes.reads.txt</a>, which contain gc content and read count information for probes on chromosome 22 for 26 samples.</p>
 
 <p>First, read in the data:</p>
 
-<pre><code>&gt; gc &lt;- read.table("gc.txt")$V4
+<pre><code>&gt; gc &lt;- read.table("gc.txt")$V2
 &gt; canoes.reads &lt;- read.table("canoes.reads.txt")
 </code></pre>
 
@@ -78,7 +78,7 @@
 
 <pre><code># execute this command from the directory where you have saved CANOES.R
 # first make sure you have the packages nnls, Hmisc, mgcv and plyr installed 
-# (you can install these with install.packages(c("nnls", "Hmisc", "mgcv", "plyr"))
+# you can install these with the command install.packages(c("nnls", "Hmisc", "mgcv", "plyr"))
 &gt; source("CANOES.R")
 
 # create a vector to hold the results for each sample
@@ -94,9 +94,9 @@
 
 # inspect the first two CNV calls
 &gt; head(xcnvs, 2)
-  SAMPLE CNV             INTERVAL     KB CHR   MID_BP    TARGETS NUM_TARG Q_SOME
-1     S2 DEL 22:25713988-25756059 42.071  22 25735024 1132..1137        6     99
-2     S3 DEL 22:24373138-24384231 11.093  22 24378684   936..942        7     44
+  SAMPLE CNV             INTERVAL     KB CHR   MID_BP    TARGETS NUM_TARG MLCN Q_SOME
+1     S2 DEL 22:25713988-25756059 42.071  22 25735024 1132..1137        6    1     99
+2     S3 DEL 22:24373138-24384231 11.093  22 24378684   936..942        7    0     44
 </code></pre>
 
 <p>Now we can plot all the CNV calls.</p>
