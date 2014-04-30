@@ -15,10 +15,6 @@ Test <- function(){
   # call CNVs in each sample
   # create a vector to hold the results for each sample
   xcnv.list <- vector('list', length(sample.names))
-  # for testing 'chr' removal
-  # canoes.reads$chromosome <- paste("chr", canoes.reads$chromosome, sep="")
-  canoes.reads$chromosome[1] <- 'Z'
-  browser()
   for (i in 1:length(sample.names)){
     xcnv.list[[i]] <- CallCNVs(sample.names[i], canoes.reads) 
   }
