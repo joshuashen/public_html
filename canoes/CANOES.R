@@ -149,9 +149,19 @@ CallCNVs <- function(sample.name, counts, p=1e-08, Tnum=6, D=70000, numrefs=30, 
   if (length(setdiff(names(counts)[1:5], c("target", "chromosome", "start", "end", "gc"))) > 0){
     stop("First five columns of counts matrix must be target, chromosome, start, end, gc")
   }
-  if (length(setdiff(unique(counts$chromosome), seq(1:22)))>0) {
-    stop("chromosome must take value in range 1-22 (support for sex chromosomes to come)")
+  if (length(setdiff(unique(counts$chromosome), seq(1:22))) > 0) {
+    # remove sex chromosomes
+    cat("Trying to remove sex chromosomes and 'chr' prefixes\n")
+    counts <- subset(counts, !chromosome %in% c("chrX", "chrY", "X", "Y"))
+    if (sum(grepl("chr", counts$chromosome))==length(counts$chromosome)){
+      counts$chromosome <- gsub("chr", "", counts$chromosome)
+    }
+    counts$chromosome <- as.numeric(counts$chromosome)
+    if (length(setdiff(unique(counts$chromosome), seq(1:22))) > 0) 
+      stop("chromosome must take value in range 1-22 (support for sex chromosomes to come)")
   }
+  library(plyr)
+  counts <- arrange(counts, chromosome, start)
   if (p <= 0){
     stop("parameter p must be positive")
   }
@@ -290,9 +300,19 @@ GenotypeCNVs <- function(xcnvs, sample.name, counts, p=1e-08, Tnum=6,
   if (length(setdiff(names(counts)[1:5], c("target", "chromosome", "start", "end", "gc"))) > 0){
     stop("First five columns of counts matrix must be target, chromosome, start, end, gc")
   }
-  if (length(setdiff(unique(counts$chromosome), seq(1:22)))>0) {
-    stop("chromosome must take value in range 1-22 (support for sex chromosomes to come)")
+  if (length(setdiff(unique(counts$chromosome), seq(1:22))) > 0) {
+    # remove sex chromosomes
+    cat("Trying to remove sex chromosomes and 'chr' prefixes\n")
+    counts <- subset(counts, !chromosome %in% c("chrX", "chrY", "X", "Y"))
+    if (sum(grepl("chr", counts$chromosome))==length(counts$chromosome)){
+      counts$chromosome <- gsub("chr", "", counts$chromosome)
+    }
+    counts$chromosome <- as.numeric(counts$chromosome)
+    if (length(setdiff(unique(counts$chromosome), seq(1:22))) > 0) 
+      stop("chromosome must take value in range 1-22 (support for sex chromosomes to come)")
   }
+  library(plyr)
+  counts <- arrange(counts, chromosome, start)
   if (p <= 0){
     stop("parameter p must be positive")
   }
