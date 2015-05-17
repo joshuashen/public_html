@@ -1,15 +1,17 @@
 /* @import url("//fonts.googleapis.com/css?family=IM+Fell+Great+Primer+SC"); */
 
 body {
-	font: 100%  Charter, "PT Serif", Georgia, Times, Serif;
+	font: 100%  Enriqueta, Charter, "PT Serif", Georgia, Times, Serif;
 	font-size: 1.1em;
-	background: #777; 
+/*	background: #777;  */
 	margin: 5px; 
 	padding: 0;
 	text-align: center; 
 	color: #555555;
 }
  
+
+
 #container {
 	width: 900px;  
 	background-image: url(images/Columbia_logo_150px.png);  
@@ -54,7 +56,7 @@ margin-right: 60px;
      padding-left: 80px; 
      text-align: left;
      font-size: 2em;
-     font-family: Charter, "PT Serif", Georgia, Serif;
+     font-family: "PT Serif", Georgia, Serif;
      font-weight: bold;
  }
 
@@ -82,7 +84,7 @@ margin-right: 60px;
 #footer h3 {
 	font-size: 1.4em;
 	
-    font-family: Charter, "PT Serif", Georgia, Serif;
+    font-family: "PT Serif", Georgia, Serif;
 
 }
 
@@ -108,7 +110,7 @@ margin-right: 60px;
         margin-right: 80px;
         margin-left: 80px;
     font-size: 1.0em;
-    font-family: Charter,  "PT Serif", Georgia, Serif;
+    font-family: "PT Serif", Georgia, Serif;
 
 /*      background-color: #476ea5; */
         border-bottom: solid 1px gray;
@@ -170,14 +172,14 @@ margin-right: 60px;
 	font-size: 1.8em;
 	margin-bottom: 1em;
 	margin-top: 1em;
-    font-family: Charter, "PT Serif", Georgia, Serif;
+    font-family:  "PT Serif", Georgia, Serif;
 }
 
 #mainContent h3
 {
 	font-size: 1.4em;
 	
-    font-family: Charter, "PT Serif", Georgia, Serif;
+    font-family:  "PT Serif", Georgia, Serif;
 
 /* 	color: #1d4e91; */
 
@@ -187,7 +189,7 @@ margin-right: 60px;
 {
 	font-size: 1.2em;
 	
-    font-family: Charter, "PT Serif", Georgia, Serif;
+    font-family: "PT Serif", Georgia, Serif;
     padding: 10px 0px 0px 10px;
     margin: 0px;
 /* 	color: #476ea5; */
@@ -249,13 +251,31 @@ margin-right: 60px;
 .cleaner{clear: left; line-height: 0; height: 0;} 
 
 
-.people img{
-border:none;
-  
- float: left;
- padding: 0px 20px 40px 0px;
+ 
+
+.people {
+  position: relative;
+  width: 33.3%;
+  float: left;
+  padding:0px;
+  margin: 0px;
+  height: 250px;
+}
+
+
+#mainContent .people p
+{
+	padding: 0px;
+	margin: 0px;
 
 }
+
+.people img{
+ padding: 0px;
+ margin: 0px;
+border:none;
+height: 150px;
+ }
 
 a:hover{
 
