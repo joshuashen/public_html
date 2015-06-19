@@ -250,8 +250,37 @@ margin-right: 60px;
 
 .cleaner{clear: left; line-height: 0; height: 0;} 
 
+.project{
+ position: relative;
+  width: 50%;
+  float: left;
+  padding:0px;
+  margin: 0px 0px 40px 0px;
 
- 
+}
+
+.project a{
+ text-decoration: none;
+  background-color: inherit;
+color: inherit;
+}
+
+.project a:hover {
+  text-decoration: underline; 
+  background-color: #FAF8CC;
+  color: red;
+}
+
+.project h3 {
+ padding: 0px 0px 0px 30px;
+ margin: 0px;
+}
+
+#mainContent .project p{
+ padding: 10px 0px 20px 30px;
+ margin: 0px;
+}
+
 
 .people {
   position: relative;
