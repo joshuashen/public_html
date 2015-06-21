@@ -13,7 +13,7 @@ body {
 
 
 #container {
-	width: 900px;  
+	width: 800px;  
 /*	background-image: url(images/Columbia_logo_150px.png);   */
 /*	background-position: 810px 30px; */
 /*	background-repeat: no-repeat;  */
@@ -48,22 +48,22 @@ margin-right: 60px;
 
 	
 	padding: 0px;
-	padding-top: 30px;
+	padding-top: 10px;
     color: #333333;
 }
  #header h1 {
      margin: 0; 
   
-     text-align: center;
+     text-align: left;
      font-size: 2em;
      font-family: "PT Serif", Georgia, Serif;
      font-weight: bold;
  }
 
  #mainContent {
-     padding: 40px; 
-     margin-left: 40px;
-     margin-right: 40px;
+     padding: 0px; 
+     margin-left: 0px;
+     margin-right: 0px;
      
    /*  background: #FFFFFF; */
   /*   background-color: 'transparent'; */
@@ -106,12 +106,12 @@ margin-right: 60px;
 #menu
 {
         padding: 0;
-        margin-bottom: 0px;
-	    margin-right: 100px;
+        margin-bottom: 10px;
+	margin-right: 80px;
 
-        margin-left: 100px;
-    font-size: 1.0em;
-    font-family: "PT Serif", Georgia, Serif;
+        margin-left: 0px;
+	font-size: 1.0em;
+	font-family: "PT Serif", Georgia, Serif;
 	text-align: center;
 
 /*      background-color: #476ea5; */
@@ -142,12 +142,13 @@ margin-right: 60px;
         border: solid 1px gray;
         border-bottom: 0px;
         margin-right: 10px; 
+	margin-left: 0px;
 }
 
 #menu ul li a
 {
         display: block;
-        padding: 5px 5px 7px 5px;
+        padding: 5px 5px 6px 5px;
         text-decoration: none;
         background-color: inherit;
   /*      color: #C85A17;  */
@@ -201,8 +202,8 @@ margin-right: 60px;
 {
 	text-align: left;
   /*  font-size: 1em; */
-	margin: 10px;
-	padding: 3px 0px 3px 15px;
+	margin: 0px;
+	padding: 3px 0px 3px 0px;
 }
 
 #mainContent ul
@@ -256,8 +257,8 @@ margin-right: 60px;
  position: relative;
   width: 90%;
   float: left;
-  padding:10px;
-  margin: 0px 0px 40px 0px;
+  padding:0px;
+  margin: 0px 0px 0px 0px;
 
 }
 
@@ -274,12 +275,12 @@ color: inherit;
 }
 
 .project h3 {
- padding: 0px 0px 0px 30px;
+ padding: 10px 0px 10px 0px;
  margin: 0px;
 }
 
 #mainContent .project p{
- padding: 10px 0px 20px 30px;
+ padding: 0px 0px 10px 0px;
  margin: 0px;
 }
 
@@ -296,7 +297,7 @@ color: inherit;
 
 #mainContent .people p
 {
-padding: 0px 40px 0px 0px;	
+padding: 0px 20px 0px 0px;	
 margin: 0px;
 
 }
