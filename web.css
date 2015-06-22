@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Enriqueta:400,700);
+@import url(http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic);
 
 body {
 /*	font: 100%  'Enriqueta', Charter, "PT Serif", Georgia, Times, Serif; */
@@ -13,7 +14,7 @@ body {
 
 
 #container {
-	width: 800px;  
+	width: 750px;  
 /*	background-image: url(images/Columbia_logo_150px.png);   */
 /*	background-position: 810px 30px; */
 /*	background-repeat: no-repeat;  */
@@ -22,7 +23,7 @@ body {
 	
 	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
 	text-align: left; 
-	font-family: 'Enriqueta', "Myriad Pro", "Seravek", "PT Sans", Verdana, "Lucida Grande", Sans-Serif;
+	font-family: "Myriad Pro", 'Enriqueta', "Seravek", "PT Sans", Sans-Serif;
 }
 
 
@@ -117,7 +118,7 @@ height: 100px;
      margin: 0; 
   
      text-align: left;
-     font-size: 2em;
+     font-size: 1.8em;
 /*      font-family: "PT Serif", Georgia, Serif; */
      font-weight: bold;
  }
@@ -239,7 +240,7 @@ height: 100px;
 
 #mainContent h2
 {
-	font-size: 1.8em;
+	font-size: 1.6em;
 	margin-bottom: 1em;
 	margin-top: 1em;
 /*    font-family:  "PT Serif", Georgia, Serif; */
