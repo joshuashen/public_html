@@ -1,36 +1,24 @@
-@import url(http://fonts.googleapis.com/css?family=Enriqueta:400,700);
-@import url(http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic);
+/* @import url(http://fonts.googleapis.com/css?family=Enriqueta:400,700); */
+/*  @import url(http://fonts.googleapis.com/css?family=Slabo+27px);  */
+@import url(http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic);
 
 body {
-/*	font: 100%  'Enriqueta', Charter, "PT Serif", Georgia, Times, Serif; */
-	font-size: 1.1em;
+	font-size: 1.2em; 
 /*	background: #777;  */
-	margin: 5px; 
-	padding: 0;
-	text-align: center; 
-	color: #555555;
+	margin: 0px; 
+	padding: 0px;
+	color: #151515; 
 }
  
 
 
 #container {
-	width: 750px;  
-/*	background-image: url(images/Columbia_logo_150px.png);   */
-/*	background-position: 810px 30px; */
-/*	background-repeat: no-repeat;  */
-	
+	width: 800px;  
+
 	background-color: #fff;
-	
 	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
 	text-align: left; 
-	font-family: "Myriad Pro", 'Enriqueta', "Seravek", "PT Sans", Sans-Serif;
-}
-
-
-#logo {
-float: left;
-margin-right: 10px;
-height: 100px;
+	font-family: "Myriad Pro", 'PT Serif', Sans-Serif;
 }
 
 
@@ -40,27 +28,16 @@ margin-right: 60px;
 
 }
 
-.smallfigure img{
-float: right;
-margin-left: 10px;
-height: 100px;
-
-}
-
 .paper {
 	margin-bottom: 20px;
 	min-height: 150px;
-
-	
 }
 
 .paper img {
-/*	max-width: 30%;  */
 	max-height: 150px;
 	float: right;
 	margin-left: 10px;
-/*	height: 150px; */
-	overflow:hidden;
+	overflow: hidden;
 }	
 
 .paper p {
@@ -74,167 +51,160 @@ height: 100px;
 
 .paper .author-journal {
 	color: #777777;
-	font-size: 1.1em;
+	font-size: 1.0em;
 	font-family: "Myriad Pro", "PT Sans",  sans-serif;
 }
 
 .paper2 {
-	margin-top: 30px;
-	margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .paper2 p {
-   width: 100%;
+    width: 100%;
 }
 
 .paper2 .title {
-	font-size: 1.2em;
+    font-size: 1.2em;
 }
 
 .paper2 .author-journal {
-	color: #777777;
-	font-size: 1.1em;
-	font-family: "Myriad Pro", "PT Sans",  sans-serif;
+    color: #777777;
+    font-size: 1.0em;
+    font-family: "Myriad Pro", "PT Sans",  sans-serif;
 }
 
 
 .figure img {
-	float: right;
-	margin-left: 10px;
-	height: 200px;
+    float: right;
+    margin-left: 10px;
+    height: 200px;
 }
 
 
  #header {
 	#background: #1d4e91;
-/*	background: #FFFFFF;; */
+	margin-right: 80px;
+/*	background-image: url("images/logo.png");
+	background-size: 60px 60px;
+	background-repeat: no-repeat;
+	background-position: right center;  */
 
-	
 	padding: 0px;
-	padding-top: 10px;
-    color: #333333;
-}
+	color: #333333;
+ }
  #header h1 {
-     margin: 0; 
-  
+     margin: 10px 0px 0px 0px;
      text-align: left;
-     font-size: 1.8em;
+     font-size: 1.5em;
+     color: #707070;
 /*      font-family: "PT Serif", Georgia, Serif; */
      font-weight: bold;
+     padding: 0px;
  }
 
  #mainContent {
      padding: 0px; 
-     margin-left: 0px;
-     margin-right: 0px;
-
-   /*  background: #FFFFFF; */
+     margin: 0px;
   /*   background-color: 'transparent'; */
 }
- #footer { 
-	padding: 40px; 
 
-	margin-left: 40px;
-     margin-right: 40px;
-  /*   background-image: url(images/Columbia_logo_200px.png);   */
-	background-position: 40px 120px;
-	background-repeat: no-repeat; 
-	
-	
-	/*background: #FFFFFF;*/
+ #footer { 
+     padding: 0px;
+     margin: 0px;
 } 
 
 #footer h3 {
-	font-size: 1.4em;
-	
-  /*  font-family: "PT Serif", Georgia, Serif; */
-
+    font-size: 1.4em;
 }
 
 
  #footer p {
-/*	margin-left: 200px;  */
-	font-size: 0.9em;
-	text-align: left;
-	color: #999;
-	margin: 10px;
-}
+     /*	margin-left: 200px;  */
+     font-size: 0.9em;
+     text-align: left;
+     color: #999;
+     margin: 20px;
+ }
  #container #header div p {
-	font-size: 1em;
-}
- #container #header table {
-	font-size: 1em;
+     font-size: 1em;
 }
 
 #menu
 {
-        padding: 0;
-        margin-bottom: 10px;
-	margin-right: 80px;
-
-        margin-left: 0px;
-	font-size: 1.0em;
-/*	font-family: "PT Serif", Georgia, Serif; */
-	text-align: center;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 20px 0px;
+    font-size: 1em;
+    text-align: center;
 
 /*      background-color: #476ea5; */
-        border-bottom: solid 1px gray;
+    border-bottom: solid 1px gray;
 }
 
 #menu div
 {
-        clear: both;
-        margin: 0px;
-        padding: 0px;
+    clear: both;
+    margin: 0px;
+    padding: 0px;
+}
+
+#menu .home {
+    float: left;
+    padding: 0px;
+    margin-left: 40px;
+
 }
 
 #menu ul
 {
-        display: block;
-        position: relative;
-        top: 1px;
-        list-style: none;
-        padding: 0px, 0px, 0px, 0px;
-        margin-bottom: 0px;
+    /*display: block; */
+    position: relative; 
+    float: left;
+    top: 1px;
+    list-style: none;
+    padding: 0px, 0px, 0px, 0px;
+    margin: 5px 0px 0px 0px;
+/*    margin-left: 40px; */
+
 }
         
 #menu ul li
 {
-        position: relative;
-        float: left;
-        border: solid 1px gray;
-        border-bottom: 0px;
-        margin-right: 10px; 
-	margin-left: 0px;
+    position: relative;
+    float: left;
+    border: solid 1px gray;
+    border-bottom: 0px;
+    margin-right: 20px; 
+    margin-left: 0px;
 }
 
 #menu ul li a
 {
-        display: block;
-        padding: 5px 5px 6px 5px;
-        text-decoration: none;
-        background-color: inherit;
-  /*      color: #C85A17;  */
-	color: red;
+    display: block;
+    padding: 5px 5px 6px 5px;
+    text-decoration: none;
+    background-color: inherit;
+    /*      color: #C85A17;  */
+    color: red;
 }
 
 #menu ul li a:hover
 {
 /*	background-color: #FAF8CC; */
 /*	color: red; */
-	background-color: #FAF8CC;
+    background-color: #FAF8CC;
 }
 
 #menu ul li.active, #menu ul li.active a, #menu ul li.active a:hover
 {
-	background-color: #ffffff;
-	color: #000000;
-	border-top: solid 1.5px black;
-
+    background-color: #ffffff;
+    color: #000000;
+    border-top: solid 1.2px black;
+    
 }
 
 #mainContent {
-	margin: 0px 80px 0px 0px;
+    margin: 0px 80px 0px 0px;
 
 }
 
