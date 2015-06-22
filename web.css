@@ -1,7 +1,7 @@
-/* @import url("//fonts.googleapis.com/css?family=IM+Fell+Great+Primer+SC"); */
+@import url(http://fonts.googleapis.com/css?family=Enriqueta:400,700);
 
 body {
-	font: 100%  Enriqueta, Charter, "PT Serif", Georgia, Times, Serif;
+/*	font: 100%  'Enriqueta', Charter, "PT Serif", Georgia, Times, Serif; */
 	font-size: 1.1em;
 /*	background: #777;  */
 	margin: 5px; 
@@ -22,7 +22,7 @@ body {
 	
 	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
 	text-align: left; 
-	font-family: "Myriad Pro", "Seravek", "PT Sans", Verdana, "Lucida Grande", Sans-Serif;
+	font-family: 'Enriqueta', "Myriad Pro", "Seravek", "PT Sans", Verdana, "Lucida Grande", Sans-Serif;
 }
 
 
@@ -47,7 +47,7 @@ height: 100px;
 }
 
 .paper {
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	min-height: 150px;
 
 	
@@ -74,12 +74,12 @@ height: 100px;
 .paper .author-journal {
 	color: #777777;
 	font-size: 1.1em;
-
+	font-family: "Myriad Pro", "PT Sans",  sans-serif;
 }
 
 .paper2 {
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 
 .paper2 p {
@@ -93,7 +93,7 @@ height: 100px;
 .paper2 .author-journal {
 	color: #777777;
 	font-size: 1.1em;
-
+	font-family: "Myriad Pro", "PT Sans",  sans-serif;
 }
 
 
@@ -118,7 +118,7 @@ height: 100px;
   
      text-align: left;
      font-size: 2em;
-     font-family: "PT Serif", Georgia, Serif;
+/*      font-family: "PT Serif", Georgia, Serif; */
      font-weight: bold;
  }
 
@@ -126,7 +126,7 @@ height: 100px;
      padding: 0px; 
      margin-left: 0px;
      margin-right: 0px;
-     
+
    /*  background: #FFFFFF; */
   /*   background-color: 'transparent'; */
 }
@@ -146,7 +146,7 @@ height: 100px;
 #footer h3 {
 	font-size: 1.4em;
 	
-    font-family: "PT Serif", Georgia, Serif;
+  /*  font-family: "PT Serif", Georgia, Serif; */
 
 }
 
@@ -173,7 +173,7 @@ height: 100px;
 
         margin-left: 0px;
 	font-size: 1.0em;
-	font-family: "PT Serif", Georgia, Serif;
+/*	font-family: "PT Serif", Georgia, Serif; */
 	text-align: center;
 
 /*      background-color: #476ea5; */
@@ -242,14 +242,14 @@ height: 100px;
 	font-size: 1.8em;
 	margin-bottom: 1em;
 	margin-top: 1em;
-    font-family:  "PT Serif", Georgia, Serif;
+/*    font-family:  "PT Serif", Georgia, Serif; */
 }
 
 #mainContent h3
 {
 	font-size: 1.4em;
 	
-    font-family:  "PT Serif", Georgia, Serif;
+ /* font-family: Lato, "PT Serif", Georgia, Serif; */
 
 /* 	color: #1d4e91; */
 
@@ -259,7 +259,7 @@ height: 100px;
 {
 	font-size: 1.2em;
 	
-    font-family: "PT Serif", Georgia, Serif;
+  /*  font-family: "PT Serif", Georgia, Serif; */
     padding: 10px 0px 0px 0px;
     margin: 0px;
 /* 	color: #476ea5; */
@@ -268,7 +268,7 @@ height: 100px;
 #mainContent p
 {
 	text-align: left;
-  /*  font-size: 1em; */
+/*   font-size: 1.1em; */
 	margin: 3px 0px 0px 0px;
 	padding: 0px;
 }
