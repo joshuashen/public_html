@@ -3,7 +3,7 @@
 @import url(http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic);
 
 body {
-	font-size: 1.2em; 
+	font-size: 1.1em; 
 /*	background: #777;  */
 	margin: 0px; 
 	padding: 0px;
@@ -110,6 +110,7 @@ margin-right: 60px;
  #footer { 
      padding: 0px;
      margin: 0px;
+     color: #bbb;
 } 
 
 #footer h3 {
@@ -117,11 +118,11 @@ margin-right: 60px;
 }
 
 
- #footer p {
+#footer p {
      /*	margin-left: 200px;  */
      font-size: 0.9em;
      text-align: left;
-     color: #999;
+     color: #bbb;
      margin: 20px;
  }
  #container #header div p {
