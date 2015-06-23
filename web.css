@@ -7,7 +7,7 @@ body {
 /*	background: #777;  */
 	margin: 0px; 
 	padding: 0px;
-	color: #151515; 
+	color: #353535; 
 }
  
 
@@ -52,7 +52,7 @@ margin-right: 60px;
 .paper .author-journal {
 	color: #777777;
 	font-size: 1.0em;
-	font-family: "Myriad Pro", "PT Sans",  sans-serif;
+	font-family: "Myriad Pro", "PT Serif",  sans-serif;
 }
 
 .paper2 {
@@ -71,7 +71,7 @@ margin-right: 60px;
 .paper2 .author-journal {
     color: #777777;
     font-size: 1.0em;
-    font-family: "Myriad Pro", "PT Sans",  sans-serif;
+    font-family: "Myriad Pro", "PT Serif",  sans-serif;
 }
 
 
@@ -239,7 +239,7 @@ margin-right: 60px;
 #mainContent p
 {
 	text-align: left;
-/*   font-size: 1.1em; */
+	font-size: 1.1em;
 	margin: 3px 0px 0px 0px;
 	padding: 0px;
 }
