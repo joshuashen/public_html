@@ -30,11 +30,11 @@ margin-right: 60px;
 
 .paper {
 	margin-bottom: 20px;
-	min-height: 150px;
+	min-height: 160px;
 }
 
 .paper img {
-	max-height: 150px;
+	max-height: 160px;
 	float: right;
 	margin-left: 10px;
 	overflow: hidden;
