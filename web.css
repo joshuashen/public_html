@@ -323,14 +323,17 @@ margin-right: 60px;
 
 #mainContent .people p
 {
-padding: 0px 20px 0px 0px;	
+padding: 10px 10px 10px 10px;	
 margin: 0px;
+text-align: center;
 
 }
 
 .people img{
  padding: 0px;
- margin: 0px;
+margin-left: auto;
+    margin-right: auto;
+  display: block;
 border:none;
 height: 150px;
  }
