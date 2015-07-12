@@ -18,7 +18,7 @@ body {
 	background-color: #fff;
 	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
 	text-align: left; 
-	font-family: "Myriad Pro", 'PT Serif', Sans-Serif;
+	font-family: -apple-system, "Myriad Pro", 'PT Serif', Sans-Serif;
 }
 
 
