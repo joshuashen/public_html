@@ -13,12 +13,12 @@ body {
 
 
 #container {
-	width: 900px;  
+    width: 920px;  
 
-	background-color: #fff;
-	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
-	text-align: left; 
-	font-family: -apple-system, "Myriad Pro", 'PT Serif', Sans-Serif;
+    background-color: #fff;
+    margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
+    text-align: left; 
+    font-family: -apple-system, "Myriad Pro", 'PT Serif', Sans-Serif;
 }
 
 
