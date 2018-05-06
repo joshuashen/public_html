@@ -28,9 +28,19 @@ margin-right: 60px;
 
 }
 
+
+.news {
+    color: #454545;
+    padding: 20px;
+}
+
+.news p {
+    
+}
+
 .paper {
 	margin-bottom: 20px;
-	min-height: 160px;
+  min-height: 160px;
 }
 
 .paper img {
@@ -50,7 +60,7 @@ margin-right: 60px;
 }
 
 .paper .author-journal {
-	color: #777777;
+	/*color: #777777;*/
 	font-size: 1.0em;
 }
 
